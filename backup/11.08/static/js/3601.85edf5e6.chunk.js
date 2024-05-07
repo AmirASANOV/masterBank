@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[3601],{33601:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var o=t(67294),r=t(45346);const c=function(){return o.createElement(r.Z,{open:!1,location:"mfo"})}}}]);
