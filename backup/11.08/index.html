@@ -1,106 +1,191 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Pragma" content="no-cache"/><meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><meta name="description" content="Получите лучшие условия по кредиту наличными, кредитным картам, картам рассрочки онлайн. Не выходя из дома. До 5 миллионов рублей."><title>Получите лучшие условия онлайн.</title><base href="/"><link rel="icon" href="favicon.ico"/><script async>( function () {
-         'use strict';
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=5"
+    />
+    <meta
+      name="description"
+      content="Получите лучшие условия по кредиту наличными, кредитным картам, картам рассрочки онлайн. Не выходя из дома. До 5 миллионов рублей."
+    />
+    <title>Получите лучшие условия онлайн.</title>
+    <base href="/" />
+    <link rel="icon" href="/favicon.ico" />
+    <script async>
+      (function () {
+        "use strict";
 
-         let loadedMetrica = false,
-                 metricaId = 85610464,
-                 timerId;
+        let loadedMetrica = false,
+          metricaId = 85610464,
+          timerId;
 
-         if (navigator.userAgent.indexOf('YandexMetrika') > -1) {
-            loadMetrica();
-         } else {
-            window.addEventListener('scroll', loadMetrica, {passive: true});
+        if (navigator.userAgent.indexOf("YandexMetrika") > -1) {
+          loadMetrica();
+        } else {
+          window.addEventListener("scroll", loadMetrica, { passive: true });
 
-            window.addEventListener('touchstart', loadMetrica);
+          window.addEventListener("touchstart", loadMetrica);
 
-            document.addEventListener('mouseenter', loadMetrica);
+          document.addEventListener("mouseenter", loadMetrica);
 
-            document.addEventListener('click', loadMetrica);
+          document.addEventListener("click", loadMetrica);
 
-            document.addEventListener('DOMContentLoaded', loadFallback);
-         }
+          document.addEventListener("DOMContentLoaded", loadFallback);
+        }
 
-         function loadFallback() {
-            timerId = setTimeout(loadMetrica, 1000);
-         }
+        function loadFallback() {
+          timerId = setTimeout(loadMetrica, 1000);
+        }
 
-         function loadMetrica() {
-            if (loadedMetrica) {
-               return;
-            }
-
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-               m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(metricaId, "init", {
-                       clickmap:true,
-                       trackLinks:true,
-                       accurateTrackBounce:true,
-                       webvisor:true,
-                       trackHash:true
-                    }
-            );
-
-            loadedMetrica = true;
-
-            clearTimeout(timerId);
-
-            window.removeEventListener('scroll', loadMetrica);
-            window.removeEventListener('touchstart', loadMetrica);
-            document.removeEventListener('mouseenter', loadMetrica);
-            document.removeEventListener('click', loadMetrica);
-            document.removeEventListener('DOMContentLoaded', loadFallback);
-         }
-      } )()</script><script defer="defer" src="/static/js/runtime.189141b6.bundle.js"></script><script defer="defer" src="/static/js/commons-main-index.js.6574c2d3.bundle.js"></script><script defer="defer" src="/static/js/commons-main-redux.js.3c70b7e0.bundle.js"></script><script defer="defer" src="/static/js/commons-main-react-dom.production.min.js.5f2c957f.bundle.js"></script><script defer="defer" src="/static/js/commons-main-moment.js.27e51aa5.bundle.js"></script><script defer="defer" src="/static/js/commons-main-router.js.70bb02b9.bundle.js"></script><script defer="defer" src="/static/js/commons-main-redux-toolkit.esm.js.cabfc136.bundle.js"></script><script defer="defer" src="/static/js/commons-main-rtk-query.esm.js.67cd5e27.bundle.js"></script><script defer="defer" src="/static/js/main.19241a87.bundle.js"></script><link href="/static/style/main.6e902fc0.css" rel="stylesheet"></head><body><noscript><div><img src="https://mc.yandex.ru/watch/85610464" style="position:absolute; left:-9999px;" alt=""/></div></noscript><script async>( function () {
-      'use strict';
-
-      // Флаг, что Метрика уже загрузилась.
-      let loadedMetrica = false,
-              // Ваш идентификатор сайта в Яндекс.Метрика.
-              metricaId = 3236204,
-              // Переменная для хранения таймера.
-              timerId;
-
-      // Для бота Яндекса грузим Метрику сразу без "отложки",
-      // чтобы в панели Метрики были зелёные кружочки
-      // при проверке корректности установки счётчика.
-      if (navigator.userAgent.indexOf('MailRu') > -1) {
-         loadMetrica();
-      } else {
-         // Подключаем Метрику, если юзер начал скроллить.
-         window.addEventListener('scroll', loadMetrica, {passive: true});
-
-         // Подключаем Метрику, если юзер коснулся экрана.
-         window.addEventListener('touchstart', loadMetrica);
-
-         // Подключаем Метрику, если юзер дернул мышкой.
-         document.addEventListener('mouseenter', loadMetrica);
-
-         // Подключаем Метрику, если юзер кликнул мышкой.
-         document.addEventListener('click', loadMetrica);
-
-         // Подключаем Метрику при полной загрузке DOM дерева,
-         // с "отложкой" в 1 секунду через setTimeout,
-         // если пользователь ничего вообще не делал (фоллбэк).
-         document.addEventListener('DOMContentLoaded', loadFallback);
-      }
-
-      function loadFallback() {
-         timerId = setTimeout(loadMetrica, 1000);
-      }
-
-      function loadMetrica() {
-         // Если флаг загрузки Метрики отмечен,
-         // то ничего более не делаем.
-         if (loadedMetrica) {
+        function loadMetrica() {
+          if (loadedMetrica) {
             return;
-         }
+          }
 
-         const _tmr = window._tmr || (window._tmr = []);
+          (function (m, e, t, r, i, k, a) {
+            m[i] =
+              m[i] ||
+              function () {
+                (m[i].a = m[i].a || []).push(arguments);
+              };
+            m[i].l = 1 * new Date();
+            (k = e.createElement(t)),
+              (a = e.getElementsByTagName(t)[0]),
+              (k.async = 1),
+              (k.src = r),
+              a.parentNode.insertBefore(k, a);
+          })(
+            window,
+            document,
+            "script",
+            "https://mc.yandex.ru/metrika/tag.js",
+            "ym"
+          );
 
-         _tmr.push({id: metricaId, type: "pageView", start: (new Date()).getTime()});
+          ym(metricaId, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            trackHash: true,
+          });
 
-         (function (d, w, id) {
+          loadedMetrica = true;
+
+          clearTimeout(timerId);
+
+          window.removeEventListener("scroll", loadMetrica);
+          window.removeEventListener("touchstart", loadMetrica);
+          document.removeEventListener("mouseenter", loadMetrica);
+          document.removeEventListener("click", loadMetrica);
+          document.removeEventListener("DOMContentLoaded", loadFallback);
+        }
+      })();
+    </script>
+    <script defer="defer" src="/static/js/runtime.189141b6.bundle.js"></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-index.js.6574c2d3.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-redux.js.3c70b7e0.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-react-dom.production.min.js.5f2c957f.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-moment.js.27e51aa5.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-router.js.70bb02b9.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-redux-toolkit.esm.js.cabfc136.bundle.js"
+    ></script>
+    <script
+      defer="defer"
+      src="/static/js/commons-main-rtk-query.esm.js.67cd5e27.bundle.js"
+    ></script>
+    <script defer="defer" src="/static/js/main.19241a87.bundle.js"></script>
+    <link href="/static/style/main.6e902fc0.css" rel="stylesheet" />
+  </head>
+  <body>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/85610464"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <script async>
+      (function () {
+        "use strict";
+
+        // Флаг, что Метрика уже загрузилась.
+        let loadedMetrica = false,
+          // Ваш идентификатор сайта в Яндекс.Метрика.
+          metricaId = 3236204,
+          // Переменная для хранения таймера.
+          timerId;
+
+        // Для бота Яндекса грузим Метрику сразу без "отложки",
+        // чтобы в панели Метрики были зелёные кружочки
+        // при проверке корректности установки счётчика.
+        if (navigator.userAgent.indexOf("MailRu") > -1) {
+          loadMetrica();
+        } else {
+          // Подключаем Метрику, если юзер начал скроллить.
+          window.addEventListener("scroll", loadMetrica, { passive: true });
+
+          // Подключаем Метрику, если юзер коснулся экрана.
+          window.addEventListener("touchstart", loadMetrica);
+
+          // Подключаем Метрику, если юзер дернул мышкой.
+          document.addEventListener("mouseenter", loadMetrica);
+
+          // Подключаем Метрику, если юзер кликнул мышкой.
+          document.addEventListener("click", loadMetrica);
+
+          // Подключаем Метрику при полной загрузке DOM дерева,
+          // с "отложкой" в 1 секунду через setTimeout,
+          // если пользователь ничего вообще не делал (фоллбэк).
+          document.addEventListener("DOMContentLoaded", loadFallback);
+        }
+
+        function loadFallback() {
+          timerId = setTimeout(loadMetrica, 1000);
+        }
+
+        function loadMetrica() {
+          // Если флаг загрузки Метрики отмечен,
+          // то ничего более не делаем.
+          if (loadedMetrica) {
+            return;
+          }
+
+          const _tmr = window._tmr || (window._tmr = []);
+
+          _tmr.push({
+            id: metricaId,
+            type: "pageView",
+            start: new Date().getTime(),
+          });
+
+          (function (d, w, id) {
             if (d.getElementById(id)) return;
             const ts = d.createElement("script");
             ts.type = "text/javascript";
@@ -108,30 +193,42 @@
             ts.id = id;
             ts.src = "https://top-fwz1.mail.ru/js/code.js";
             const f = function () {
-               const s = d.getElementsByTagName("script")[0];
-               s.parentNode.insertBefore(ts, s);
+              const s = d.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(ts, s);
             };
             if (w.opera == "[object Opera]") {
-               d.addEventListener("DOMContentLoaded", f, false);
+              d.addEventListener("DOMContentLoaded", f, false);
             } else {
-               f();
+              f();
             }
-         })(document, window, "topmailru-code");
+          })(document, window, "topmailru-code");
 
-         // Отмечаем флаг, что Метрика загрузилась,
-         // чтобы не загружать её повторно при других
-         // событиях пользователя и старте фоллбэка.
-         loadedMetrica = true;
+          // Отмечаем флаг, что Метрика загрузилась,
+          // чтобы не загружать её повторно при других
+          // событиях пользователя и старте фоллбэка.
+          loadedMetrica = true;
 
-         // Очищаем таймер, чтобы избежать лишних утечек памяти.
-         clearTimeout(timerId);
+          // Очищаем таймер, чтобы избежать лишних утечек памяти.
+          clearTimeout(timerId);
 
-         // Отключаем всех наших слушателей от всех событий,
-         // чтобы избежать утечек памяти.
-         window.removeEventListener('scroll', loadMetrica);
-         window.removeEventListener('touchstart', loadMetrica);
-         document.removeEventListener('mouseenter', loadMetrica);
-         document.removeEventListener('click', loadMetrica);
-         document.removeEventListener('DOMContentLoaded', loadFallback);
-      }
-   } )()</script><noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3236204;js=na" style="border:0;position:absolute;left:-9999px;" alt="Top.Mail.Ru"/></div></noscript><div id="root"></div></body></html>
+          // Отключаем всех наших слушателей от всех событий,
+          // чтобы избежать утечек памяти.
+          window.removeEventListener("scroll", loadMetrica);
+          window.removeEventListener("touchstart", loadMetrica);
+          document.removeEventListener("mouseenter", loadMetrica);
+          document.removeEventListener("click", loadMetrica);
+          document.removeEventListener("DOMContentLoaded", loadFallback);
+        }
+      })();
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://top-fwz1.mail.ru/counter?id=3236204;js=na"
+          style="border: 0; position: absolute; left: -9999px"
+          alt="Top.Mail.Ru"
+        /></div
+    ></noscript>
+    <div id="root"></div>
+  </body>
+</html>
