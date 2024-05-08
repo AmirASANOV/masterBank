@@ -1,14 +1,18 @@
+"use client";
 /* eslint-disable react/self-closing-comp */
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 
-import { useLocation } from 'react-router';
+import { useLocation } from "react-router";
 
-import styles from './CreditParameters.module.sass';
+import styles from "./CreditParameters.module.sass";
 
-import { Dadata, Nullable } from '@/ApiConfig/DadataApi/DadataPropsTypes';
-import { FormApi } from '@/ApiConfig/Endpoints/FormApi';
-import { resetMask } from '@/Common/AppFormController/ControllersFunc';
-import { creditTarget, genderList } from '@/Common/AppFormHelpers/DropdownLists';
+import { Dadata, Nullable } from "@/ApiConfig/DadataApi/DadataPropsTypes";
+import { FormApi } from "@/ApiConfig/Endpoints/FormApi";
+import { resetMask } from "@/Common/AppFormController/ControllersFunc";
+import {
+  creditTarget,
+  genderList,
+} from "@/Common/AppFormHelpers/DropdownLists";
 import {
   Regular,
   capitalizeFirstLetter,
@@ -16,35 +20,38 @@ import {
   setInputMask,
   setInputPlaceholderTextForSum,
   setSpaceOfNumber,
-} from '@/Common/AppFormHelpers/Helpers';
-import { lsHandler } from '@/Common/LocalStorage/LSHandler';
-import PressButton from '@/Components/Buttons/PressButton';
-import FreeService from '@/Components/FreeService/FreeService';
-import { FormInput } from '@/Components/Inputs/OtherInputs';
-import { SelectedInput } from '@/Components/Inputs/SelectInputs';
-import { DataElement } from '@/Components/Inputs/Types/InputPropsType';
-import Protect from '@/Components/Protect/Protect';
-import Timer from '@/Components/Timer/Timer';
-import useAppDispatch from '@/CustomHooks/useAppDispatch';
-import { useAppSelector } from '@/CustomHooks/useAppSelector';
-import useFormHandler from '@/CustomHooks/useFormHandler';
-import { useHistoryWithUTM } from '@/CustomHooks/useHistoryWithUTM';
-import { useNotInitialEffect } from '@/CustomHooks/useNotInitialEffect';
-import { App } from '@/ProjectTypes/AppTypes';
+} from "@/Common/AppFormHelpers/Helpers";
+import { lsHandler } from "@/Common/LocalStorage/LSHandler";
+import PressButton from "@/Components/Buttons/PressButton";
+import FreeService from "@/Components/FreeService/FreeService";
+import { FormInput } from "@/Components/Inputs/OtherInputs";
+import { SelectedInput } from "@/Components/Inputs/SelectInputs";
+import { DataElement } from "@/Components/Inputs/Types/InputPropsType";
+import Protect from "@/Components/Protect/Protect";
+import Timer from "@/Components/Timer/Timer";
+import useAppDispatch from "@/CustomHooks/useAppDispatch";
+import { useAppSelector } from "@/CustomHooks/useAppSelector";
+import useFormHandler from "@/CustomHooks/useFormHandler";
+import { useHistoryWithUTM } from "@/CustomHooks/useHistoryWithUTM";
+import { useNotInitialEffect } from "@/CustomHooks/useNotInitialEffect";
+import { App } from "@/ProjectTypes/AppTypes";
 import {
   showModal,
   updateConfigActionState,
-} from '@/ReduxStore/reducer/ConfigReducer/ConfigReducer';
-import { localLogOut } from '@/ReduxStore/reducer/userReducer/userReducer';
-import { VCreditParameters, VFormPlacement } from '@/ReduxStore/reducer/Validator/Types';
-import { VActions } from '@/ReduxStore/reducer/Validator/ValidatorActions';
+} from "@/ReduxStore/reducer/ConfigReducer/ConfigReducer";
+import { localLogOut } from "@/ReduxStore/reducer/userReducer/userReducer";
+import {
+  VCreditParameters,
+  VFormPlacement,
+} from "@/ReduxStore/reducer/Validator/Types";
+import { VActions } from "@/ReduxStore/reducer/Validator/ValidatorActions";
 import {
   AppFormActions,
   initialValidatorState,
-} from '@/ReduxStore/reducer/Validator/ValidatorReducer';
-import { ValidatorThunk } from '@/ReduxStore/reducer/Validator/ValidatorThunk';
-import { useSendNotFullData } from '@/Utils/useSendNotFullData';
-import { checkInitialValue, getEditor, getProductFromUrl } from '@/Utils/utils';
+} from "@/ReduxStore/reducer/Validator/ValidatorReducer";
+import { ValidatorThunk } from "@/ReduxStore/reducer/Validator/ValidatorThunk";
+import { useSendNotFullData } from "@/Utils/useSendNotFullData";
+import { checkInitialValue, getEditor, getProductFromUrl } from "@/Utils/utils";
 
 interface CreditFormProps {
   lsKey: string;
@@ -53,7 +60,7 @@ interface CreditFormProps {
 }
 
 const CreditParameters: React.FC<CreditFormProps> = memo(
-  ({ lsKey, placement = 'application_form' }) => {
+  ({ lsKey, placement = "application_form" }) => {
     const history = useHistoryWithUTM();
     const dispatch = useAppDispatch();
     const form = useFormHandler();
@@ -63,17 +70,21 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
     const creditProduct = getProductFromUrl();
 
     const product = useAppSelector(
-      state => state.validator.credit_parameters_info.credit_target,
+      (state) => state.validator.credit_parameters_info.credit_target
     );
-    const v = useAppSelector(state => state.validator.credit_parameters_info);
+    const v = useAppSelector((state) => state.validator.credit_parameters_info);
     const vStatus = VActions.helpers.getInputStatus;
-    const fetching = useAppSelector(state => state.validator.fetchingFromChildren);
+    const fetching = useAppSelector(
+      (state) => state.validator.fetchingFromChildren
+    );
     const [creditProductState, setCreditProductState] =
       useState<App.CreditProduct>(creditProduct);
-    const { type } = useAppSelector(state => state.config.user);
-    const { token, isAuth, phoneNumber } = useAppSelector(state => state.session);
+    const { type } = useAppSelector((state) => state.config.user);
+    const { token, isAuth, phoneNumber } = useAppSelector(
+      (state) => state.session
+    );
 
-    const reg = new Regular('gi');
+    const reg = new Regular("gi");
     const ls = lsHandler();
     const vLs: VCreditParameters = ls.get(lsKey);
 
@@ -87,30 +98,30 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
               result: { ...v.phone_number.result, value: phone },
             },
           },
-          true,
+          true
         );
 
         FormApi.sendCreditParams(newData)
           .then(() => {
             history.push(
-              `/user/credit/${product.result.value?.value}/credit_parameters_info`,
+              `/user/credit/${product.result.value?.value}/credit_parameters_info`
             );
 
-            dispatch(AppFormActions.setApplicationStep('work_info'));
+            dispatch(AppFormActions.setApplicationStep("work_info"));
           })
-          .catch(err => {
+          .catch((err) => {
             if (err?.response?.status === 401) {
               dispatch(localLogOut());
               dispatch(
                 showModal(true, {
                   href: `/user/credit/${product.result.value?.value}/credit_parameters_info`,
-                }),
+                })
               );
             }
           });
-        history.push('/user/credit/credit_card/credit_parameters_info/');
+        history.push("/user/credit/credit_card/credit_parameters_info/");
       },
-      [v, token],
+      [v, token]
     );
 
     const checker = () => {
@@ -119,12 +130,12 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
 
     const onSubmitHandler = (e: React.FormEvent) => {
       e.preventDefault();
-      if (placement === 'children') {
+      if (placement === "children") {
         dispatch(updateConfigActionState(true));
         const data = VActions.packageData.credit_parameters_info(v, false);
         const { errors } = VActions.credit_parameters_info.build(v, {
           value: data,
-          type: 'check',
+          type: "check",
         });
 
         const isNotError =
@@ -141,29 +152,31 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
             showModal(true, {
               href: `/user/credit/${product.result.value?.value}/credit_parameters_info`,
               callBack: sendFromLanding,
-            }),
+            })
           );
           if (isAuth) {
             sendFromLanding(phoneNumber!);
           }
         } else {
-          dispatch(AppFormActions.buildCreditParameters({ value: data, type: 'check' }));
+          dispatch(
+            AppFormActions.buildCreditParameters({ value: data, type: "check" })
+          );
         }
       } else {
         checker();
       }
     };
 
-    useSendNotFullData(type, 'credit_parameters_info');
+    useSendNotFullData(type, "credit_parameters_info");
 
     useEffect(() => {
       setCreditProductState(getProductFromUrl());
     }, [location.pathname]);
 
     useEffect(() => {
-      if (fetching && placement === 'children') {
+      if (fetching && placement === "children") {
         history.push(
-          `/user/credit/${product.result.value?.value}/credit_parameters_info`,
+          `/user/credit/${product.result.value?.value}/credit_parameters_info`
         );
       }
     }, [fetching]);
@@ -173,14 +186,14 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
         dispatch(
           AppFormActions.buildCreditParameters({
             value: VActions.packageData.credit_parameters_info(vLs, false),
-            type: 'check',
-          }),
+            type: "check",
+          })
         );
       }
     }, [isAuth]);
 
     useEffect(() => {
-      const value = creditTarget.find(el => el.value === creditProductState);
+      const value = creditTarget.find((el) => el.value === creditProductState);
 
       if (!value) return;
 
@@ -189,20 +202,20 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
 
     const deps = useMemo(() => v, []);
     useNotInitialEffect(() => {
-      if (placement !== 'application_form') return;
-      if (!checkInitialValue(v, 'credit_parameters_info') && !!vLs) {
+      if (placement !== "application_form") return;
+      if (!checkInitialValue(v, "credit_parameters_info") && !!vLs) {
         dispatch(
           AppFormActions.buildCreditParameters({
             value: VActions.packageData.credit_parameters_info(vLs, false),
-            type: 'check',
-          }),
+            type: "check",
+          })
         );
       }
     }, [deps]);
 
     const onSumInputBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
       const unmaskedSum = resetMask(e.target.value);
-      let value = '';
+      let value = "";
 
       if (unmaskedSum.length < 4 && unmaskedSum.length) {
         value = `${unmaskedSum} 000`;
@@ -214,31 +227,35 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
         AppFormActions.updateCreditSum({
           value,
           touched: true,
-        }),
+        })
       );
     };
     const sumInputValue = setInputMask(
-      v.credit_sum.result.value || '',
-      setSpaceOfNumber(v.credit_sum.result.value || ''),
+      v.credit_sum.result.value || "",
+      setSpaceOfNumber(v.credit_sum.result.value || "")
     );
     const sumInputPlaceholder = setInputPlaceholderTextForSum(
-      v.credit_target.result.value?.value,
+      v.credit_target.result.value?.value
     );
 
-    const setStateTargetInput = (value: Nullable<DataElement<App.CreditProduct>>) => {
+    const setStateTargetInput = (
+      value: Nullable<DataElement<App.CreditProduct>>
+    ) => {
       dispatch(AppFormActions.updateCreditProduct({ value, touched: true }));
       if (value !== null) {
         history.push(`/user/${editor}/${value?.value}/credit_parameters_info`);
       }
     };
 
-    const onBlurInputUserSurname = (e: React.FocusEvent<HTMLInputElement, Element>) =>
+    const onBlurInputUserSurname = (
+      e: React.FocusEvent<HTMLInputElement, Element>
+    ) =>
       dispatch(
         AppFormActions.updateUserInitials({
           value: e.target.value,
           touched: true,
-          field: 'surname',
-        }),
+          field: "surname",
+        })
       );
 
     return (
@@ -254,17 +271,17 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
         id={lsKey}
         aria-hidden
       >
-        {placement === 'application_form' && (
+        {placement === "application_form" && (
           <>
             <h2 id="anketa-title"> Заявка </h2>
             <div id="anketa-info">
               <SelectedInput
                 id="form_credit_target"
-                defaultValue={v.credit_target.result.value?.title || ''}
+                defaultValue={v.credit_target.result.value?.title || ""}
                 required={v.credit_target.config.required}
-                setState={value => setStateTargetInput(value)}
+                setState={(value) => setStateTargetInput(value)}
                 status={vStatus(v.credit_target.result.status)}
-                message={v.credit_target.result.message || ''}
+                message={v.credit_target.result.message || ""}
                 data={creditTarget}
                 name={v.credit_target.result.fieldName}
                 placeholder="Например: Кредитная карта"
@@ -277,14 +294,16 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
                 id="form_credit_sum"
                 maxLength={10}
                 required
-                onBlur={e => onSumInputBlur(e)}
+                onBlur={(e) => onSumInputBlur(e)}
                 status={vStatus(v.credit_sum.result.status)}
-                errorMessage={v.credit_sum.result.message || ''}
-                labelText={setInputLabelTextForSum(v.credit_target.result.value?.value)}
+                errorMessage={v.credit_sum.result.message || ""}
+                labelText={setInputLabelTextForSum(
+                  v.credit_target.result.value?.value
+                )}
                 onInput={(e, mask, setMasked, setValue) => {
                   const value = setInputMask(
-                    e.target.value.trim() || '',
-                    setSpaceOfNumber(e.target.value.trim()),
+                    e.target.value.trim() || "",
+                    setSpaceOfNumber(e.target.value.trim())
                   );
                   setValue(value);
                 }}
@@ -294,19 +313,21 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
           </>
         )}
         <div id="contact-info" className={styles.contactInfo}>
-          {placement === 'children' && (
+          {placement === "children" && (
             <>
               <SelectedInput
                 id="form_credit_target"
-                defaultValue={v.credit_target.result.value?.title || ''}
+                defaultValue={v.credit_target.result.value?.title || ""}
                 required={v.credit_target.config.required}
-                setState={async (value: Nullable<DataElement<App.CreditProduct>>) => {
+                setState={async (
+                  value: Nullable<DataElement<App.CreditProduct>>
+                ) => {
                   await dispatch(
-                    AppFormActions.updateCreditProduct({ value, touched: true }),
+                    AppFormActions.updateCreditProduct({ value, touched: true })
                   );
                 }}
                 status={vStatus(v.credit_target.result.status)}
-                message={v.credit_target.result.message || ''}
+                message={v.credit_target.result.message || ""}
                 data={creditTarget}
                 name={v.credit_target.result.fieldName}
                 placeholder="Например: Кредитная карта"
@@ -317,54 +338,56 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
                 placeholder={sumInputPlaceholder}
                 required={v.credit_sum.config.required}
                 inputMode="numeric"
-                onBlur={e => onSumInputBlur(e)}
-                inputStyle={{ background: '#EEEFEF' }}
+                onBlur={(e) => onSumInputBlur(e)}
+                inputStyle={{ background: "#EEEFEF" }}
                 maxLength={10}
                 status={vStatus(v.credit_sum.result.status)}
-                errorMessage={v.credit_sum.result.message || ''}
-                labelText={setInputLabelTextForSum(v.credit_target.result.value?.value)}
+                errorMessage={v.credit_sum.result.message || ""}
+                labelText={setInputLabelTextForSum(
+                  v.credit_target.result.value?.value
+                )}
                 onInput={(e, mask, setMasked, setValue) => {
                   const value = setInputMask(
-                    e.target.value.trim() || '',
-                    setSpaceOfNumber(e.target.value.trim()),
+                    e.target.value.trim() || "",
+                    setSpaceOfNumber(e.target.value.trim())
                   );
                   setValue(value);
                 }}
               />
-              {v.credit_target.result.value?.value === 'car_credit' && (
+              {v.credit_target.result.value?.value === "car_credit" && (
                 <FormInput
                   id="form_deposit_car"
                   status={vStatus(v.deposit_car.result.status)}
-                  errorMessage={v.deposit_car.result.message || ''}
+                  errorMessage={v.deposit_car.result.message || ""}
                   labelText={v.deposit_car.result.fieldName}
-                  inputStyle={{ background: '#EEEFEF' }}
+                  inputStyle={{ background: "#EEEFEF" }}
                   maxLength={9}
                   placeholder="Например 700 000"
                   inputMode="numeric"
                   defaultValue={setInputMask(
-                    v.deposit_car.result.value || '',
-                    setSpaceOfNumber(v.deposit_car.result.value || ''),
+                    v.deposit_car.result.value || "",
+                    setSpaceOfNumber(v.deposit_car.result.value || "")
                   )}
                   required={v.deposit_car.config.required}
-                  onBlur={e => {
+                  onBlur={(e) => {
                     const unmaskedValue = resetMask(e.target.value);
-                    let val = '';
+                    let val = "";
                     if (unmaskedValue.length < 4 && unmaskedValue.length > 0) {
                       val = `${resetMask(e.target.value)} 000`;
                     } else {
-                      val = e.target.value || '';
+                      val = e.target.value || "";
                     }
                     dispatch(
                       AppFormActions.updateOwnFundsBuyingCar({
                         value: val,
                         touched: true,
-                      }),
+                      })
                     );
                   }}
                   onInput={(e, mask, setMasked, setValue) => {
                     const value = setInputMask(
-                      e.target.value.trim() || '',
-                      setSpaceOfNumber(e.target.value.trim()),
+                      e.target.value.trim() || "",
+                      setSpaceOfNumber(e.target.value.trim())
                     );
                     setValue(value);
                   }}
@@ -375,79 +398,85 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
 
           <FormInput
             id="form_surname"
-            defaultValue={v.surname.result.value || ''}
+            defaultValue={v.surname.result.value || ""}
             required={v.surname.config.required}
-            onBlur={e => onBlurInputUserSurname(e)}
+            onBlur={(e) => onBlurInputUserSurname(e)}
             status={vStatus(v.surname.result.status)}
-            errorMessage={v.surname.result.message || ''}
+            errorMessage={v.surname.result.message || ""}
             placeholder="Например: Иванов"
-            inputStyle={{ background: '#EEEFEF' }}
+            inputStyle={{ background: "#EEEFEF" }}
             labelText={v.surname.result.fieldName}
             onInput={(e, mask, setMasked, setValue) => {
-              setValue(capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, '')));
+              setValue(
+                capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, ""))
+              );
             }}
           />
           <FormInput
             id="form_name"
-            defaultValue={v.name.result.value || ''}
+            defaultValue={v.name.result.value || ""}
             required={v.name.config.required}
-            inputStyle={{ background: '#EEEFEF' }}
-            onBlur={e =>
+            inputStyle={{ background: "#EEEFEF" }}
+            onBlur={(e) =>
               dispatch(
                 AppFormActions.updateUserInitials({
                   value: e.target.value,
                   touched: true,
-                  field: 'name',
-                }),
+                  field: "name",
+                })
               )
             }
             status={vStatus(v.name.result.status)}
-            errorMessage={v.name.result.message || ''}
+            errorMessage={v.name.result.message || ""}
             labelText={v.name.result.fieldName}
             placeholder="Например: Иван"
             onInput={(e, mask, setMasked, setValue) => {
-              setValue(capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, '')));
+              setValue(
+                capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, ""))
+              );
             }}
           />
 
           <FormInput
             id="form_patronymic"
-            defaultValue={v.patronymic.result.value || ''}
+            defaultValue={v.patronymic.result.value || ""}
             required={v.patronymic.config.required}
             status={vStatus(v.patronymic.result.status)}
-            errorMessage={v.patronymic.result.message || ''}
+            errorMessage={v.patronymic.result.message || ""}
             placeholder="Например: Иванович"
-            inputStyle={{ background: '#EEEFEF' }}
+            inputStyle={{ background: "#EEEFEF" }}
             labelText={v.patronymic.result.fieldName}
             onInput={(e, mask, setMasked, setValue) => {
-              setValue(capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, '')));
+              setValue(
+                capitalizeFirstLetter(reg.onlyRusWordsMode(e.target.value, ""))
+              );
             }}
-            onBlur={e =>
+            onBlur={(e) =>
               dispatch(
                 AppFormActions.updateUserInitials({
                   value: e.target.value,
                   touched: true,
-                  field: 'patronymic',
-                }),
+                  field: "patronymic",
+                })
               )
             }
           />
 
           <SelectedInput
             id="form_gender"
-            defaultValue={v.gender.result.value?.title || ''}
+            defaultValue={v.gender.result.value?.title || ""}
             name="Пол"
             placeholder="Например: Мужской"
             data={genderList}
             status={vStatus(v.gender.result.status)}
             required={v.gender.config.required}
-            message={v.gender.result.message || ''}
+            message={v.gender.result.message || ""}
             setState={(value: Nullable<DataElement<Dadata.GenderType>>) =>
               dispatch(
                 AppFormActions.updateGender({
                   value,
                   touched: true,
-                }),
+                })
               )
             }
           />
@@ -463,7 +492,7 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
         </div>
 
         {/* блок с вечным обслуживанием */}
-        {placement === 'application_form' && (
+        {placement === "application_form" && (
           <>
             <div className={styles.wrapper}>
               <Timer />
@@ -473,7 +502,7 @@ const CreditParameters: React.FC<CreditFormProps> = memo(
         )}
       </form>
     );
-  },
+  }
 );
 
 export default CreditParameters;

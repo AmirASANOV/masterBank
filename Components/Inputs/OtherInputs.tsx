@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 
-import ReactInputMask from 'react-input-mask';
+import ReactInputMask from "react-input-mask";
 
-import { RenderIcon } from './Icons/RenderIcons';
-import { RenderInputMessage } from './Messages/InputMessages';
+import { RenderIcon } from "./Icons/RenderIcons";
+import { RenderInputMessage } from "./Messages/InputMessages";
 import {
   CheckboxInputPropsType,
   CustomInput,
   InputLabelProps,
-} from './Types/InputPropsType';
+} from "./Types/InputPropsType";
 
-import { Nullable } from '@/ApiConfig/DadataApi/DadataPropsTypes';
-import useSelectedList from '@/CustomHooks/useSelectedList';
-import DocumentModel from '@/models/DocumentModel/DocumentModel';
+import { Nullable } from "@/ApiConfig/DadataApi/DadataPropsTypes";
+import useSelectedList from "@/CustomHooks/useSelectedList";
+import DocumentModel from "@/models/DocumentModel/DocumentModel";
 
 /**
  * @displayName DateInput
@@ -30,18 +31,18 @@ import DocumentModel from '@/models/DocumentModel/DocumentModel';
  * */
 
 export const monthList = [
-  { value: '1', title: 'Январь' },
-  { value: '2', title: 'Февраль' },
-  { value: '3', title: 'Март' },
-  { value: '4', title: 'Апрель' },
-  { value: '5', title: 'Май' },
-  { value: '6', title: 'Июнь' },
-  { value: '7', title: 'Июль' },
-  { value: '8', title: 'Август' },
-  { value: '9', title: 'Сентябрь' },
-  { value: '10', title: 'Октябрь' },
-  { value: '11', title: 'Ноябрь' },
-  { value: '12', title: 'Декабрь' },
+  { value: "1", title: "Январь" },
+  { value: "2", title: "Февраль" },
+  { value: "3", title: "Март" },
+  { value: "4", title: "Апрель" },
+  { value: "5", title: "Май" },
+  { value: "6", title: "Июнь" },
+  { value: "7", title: "Июль" },
+  { value: "8", title: "Август" },
+  { value: "9", title: "Сентябрь" },
+  { value: "10", title: "Октябрь" },
+  { value: "11", title: "Ноябрь" },
+  { value: "12", title: "Декабрь" },
 ];
 
 export const generatedYears = (min: number) => {
@@ -82,34 +83,41 @@ export const CheckboxInput: React.FC<CheckboxInputPropsType> = ({
       className="input-container"
       id={containerId}
       style={containerStyle}
-      data-full-grid={fullGrid ? 'true' : ''}
+      data-full-grid={fullGrid ? "true" : ""}
     >
       <div className="checkbox-container">
         <div
-          className={`checkbox ${state ? `checked` : ''}`}
+          className={`checkbox ${state ? `checked` : ""}`}
           onClick={() => setState(!state)}
           aria-hidden
         />
 
         <span className="agreement-text">
-          Я даю{' '}
+          Я даю{" "}
           <button
             className="agreement-text-decoration"
-            onClick={() => openPdf('processing')}
+            onClick={() => openPdf("processing")}
           >
             согласие
           </button>
           <span>
-            {' '}
-            на обработку моих персональных данных, получение информационных и рекламных
-            сообщений, а&nbsp;также соглашаюсь с условиями{' '}
+            {" "}
+            на обработку моих персональных данных, получение информационных и
+            рекламных сообщений, а&nbsp;также соглашаюсь с условиями{" "}
           </span>
-          <button className="agreement-text-decoration" onClick={() => openPdf('offer')}>
+          <button
+            className="agreement-text-decoration"
+            onClick={() => openPdf("offer")}
+          >
             оферты
           </button>
         </span>
       </div>
-      {!state && required && message ? <span className="span-error">{message}</span> : ''}
+      {!state && required && message ? (
+        <span className="span-error">{message}</span>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
@@ -127,11 +135,11 @@ export const CheckboxInputForForm: React.FC<CheckboxInputPropsType> = ({
     className="input-container"
     id={containerId}
     style={containerStyle}
-    data-full-grid={fullGrid ? 'true' : ''}
+    data-full-grid={fullGrid ? "true" : ""}
   >
     <div className="checkbox-container">
       <div
-        className={`checkbox ${state ? `checked` : ''}`}
+        className={`checkbox ${state ? `checked` : ""}`}
         onClick={() => setState(!state)}
         aria-hidden
       />
@@ -140,7 +148,11 @@ export const CheckboxInputForForm: React.FC<CheckboxInputPropsType> = ({
         <span className="agreement-text">{label}</span>
       </span>
     </div>
-    {!state && required && message ? <span className="span-error">{message}</span> : ''}
+    {!state && required && message ? (
+      <span className="span-error">{message}</span>
+    ) : (
+      ""
+    )}
   </div>
 );
 /**
@@ -216,9 +228,14 @@ export const InputLabel: React.FC<InputLabelProps> = ({
   style,
   className,
 }) => (
-  <label htmlFor={id} className={`${className} label`} id={containerId} style={style}>
-    {text} <span>{required ? ' *' : ''}</span>
-    {hintText ? <span>{hintText}</span> : ''}
+  <label
+    htmlFor={id}
+    className={`${className} label`}
+    id={containerId}
+    style={style}
+  >
+    {text} <span>{required ? " *" : ""}</span>
+    {hintText ? <span>{hintText}</span> : ""}
   </label>
 );
 
@@ -268,24 +285,30 @@ export const FormInput: React.FC<CustomInput> = ({
 
     if (maskedValue) return list.setInputValue(maskedValue);
 
-    return list.setInputValue('');
+    return list.setInputValue("");
   }, [defaultValue, maskedValue]);
 
   useEffect(() => {
     if (defaultValue === resetValue) {
       setMaskedValue(null);
-      list.setInputValue('');
+      list.setInputValue("");
     }
   }, [defaultValue, resetValue]);
 
-  const statusText = status === undefined ? '' : status ? 'input-done' : 'input-error';
+  const statusText =
+    status === undefined ? "" : status ? "input-done" : "input-error";
 
-  const classNames = `main-input ${statusText} ${inputClassNames?.join(' ')}`;
+  const classNames = `main-input ${statusText} ${inputClassNames?.join(" ")}`;
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: "relative" }}>
       {labelText && (
-        <InputLabel text={labelText} required={!!required} id={id} style={labelStyle} />
+        <InputLabel
+          text={labelText}
+          required={!!required}
+          id={id}
+          style={labelStyle}
+        />
       )}
 
       <div className="input-container">
@@ -299,30 +322,32 @@ export const FormInput: React.FC<CustomInput> = ({
             inputMode={inputMode}
             className={classNames}
             minLength={masked.length}
-            value={defaultValue || maskedValue || ''}
-            placeholder={placeholder || ''}
+            value={defaultValue || maskedValue || ""}
+            placeholder={placeholder || ""}
             alwaysShowMask={alwaysShowMask}
-            autoComplete={autoComplete || 'something'}
-            name={(name || '') + Date.now()}
-            onKeyDown={e => onKeyDown?.(e, list)}
-            onPaste={event =>
-              onPaste ? onPaste(event, masked, setMasked, list.setInputValue) : ''
+            autoComplete={autoComplete || "something"}
+            name={(name || "") + Date.now()}
+            onKeyDown={(e) => onKeyDown?.(e, list)}
+            onPaste={(event) =>
+              onPaste
+                ? onPaste(event, masked, setMasked, list.setInputValue)
+                : ""
             }
-            onPasteCapture={event =>
+            onPasteCapture={(event) =>
               onPasteCapture
                 ? onPasteCapture(event, masked, setMasked, list.setInputValue)
-                : ''
+                : ""
             }
-            onChange={event => {
+            onChange={(event) => {
               onChange?.(event, masked, setMasked, list.setInputValue);
               if (maskedHandler) maskedChangeHandler(event);
             }}
-            onBlur={e => onBlur?.(e)}
+            onBlur={(e) => onBlur?.(e)}
             onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
               onInput?.(e, masked, setMasked, list.setInputValue);
               maskedChangeHandler?.(e);
             }}
-            onFocus={e => onFocus?.(e)}
+            onFocus={(e) => onFocus?.(e)}
           />
         ) : (
           <input
@@ -334,26 +359,26 @@ export const FormInput: React.FC<CustomInput> = ({
             style={inputStyle}
             maxLength={maxLength}
             minLength={minLength}
-            defaultValue={defaultValue || ''}
-            autoComplete={autoComplete || 'something'}
-            name={(name || '') + Date.now()}
+            defaultValue={defaultValue || ""}
+            autoComplete={autoComplete || "something"}
+            name={(name || "") + Date.now()}
             readOnly={readOnly}
-            onKeyDown={e => onKeyDown?.(e, list)}
+            onKeyDown={(e) => onKeyDown?.(e, list)}
             ref={list.input as React.RefObject<HTMLInputElement>}
-            onPaste={e => onPaste?.(e, masked, setMasked, list.setInputValue)}
-            onBlur={e => onBlur?.(e)}
+            onPaste={(e) => onPaste?.(e, masked, setMasked, list.setInputValue)}
+            onBlur={(e) => onBlur?.(e)}
             onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
               onInput?.(e, masked, setMasked, list.setInputValue)
             }
-            onFocus={e => onFocus?.(e)}
-            onClick={e => e.currentTarget.focus()}
+            onFocus={(e) => onFocus?.(e)}
+            onClick={(e) => e.currentTarget.focus()}
           />
         )}
         <RenderIcon status={status} field="text" />
       </div>
 
       <RenderInputMessage
-        message={errorMessage || extraPlaceholder || ''}
+        message={errorMessage || extraPlaceholder || ""}
         inputMessagesStyle={inputMessagesStyle}
         status={status}
       />

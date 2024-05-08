@@ -1,16 +1,17 @@
-import React, { memo, useState } from 'react';
+"use client";
+import React, { memo, useState } from "react";
 
-import PressButton from '../Buttons/PressButton';
-import Layout from '../Layouts/Layout';
+import PressButton from "../Buttons/PressButton";
+import Layout from "../Layouts/Layout";
 
-import bannerBackground from './banner-bg.png';
-import styles from './BannerDesktop.module.sass';
-import { bannerCardsHome, type BannerCardSchema } from './data';
+import bannerBackground from "./banner-bg.png";
+import styles from "./BannerDesktop.module.sass";
+import { bannerCardsHome, type BannerCardSchema } from "./data";
 
-import useAppDispatch from '@/CustomHooks/useAppDispatch';
-import { useAppSelector } from '@/CustomHooks/useAppSelector';
-import { useHistoryWithUTM } from '@/CustomHooks/useHistoryWithUTM';
-import { showModal } from '@/ReduxStore/reducer/ConfigReducer/ConfigReducer';
+import useAppDispatch from "@/CustomHooks/useAppDispatch";
+import { useAppSelector } from "@/CustomHooks/useAppSelector";
+import { useHistoryWithUTM } from "@/CustomHooks/useHistoryWithUTM";
+import { showModal } from "@/ReduxStore/reducer/ConfigReducer/ConfigReducer";
 
 const authPath = `/user/credit/credit_card/credit_parameters_info`;
 
@@ -24,15 +25,15 @@ interface BannerDesktopProps {
 const BannerDesktop = memo(
   ({
     bannerCards = bannerCardsHome,
-    title = 'Кредитная карта 365 дней без %',
+    title = "Кредитная карта 365 дней без %",
     isMobile = false,
   }: BannerDesktopProps) => {
     const [isActiveElement, setActiveElement] = useState<BannerCardSchema>(
-      bannerCards[1],
+      bannerCards[1]
     );
     const dispatch = useAppDispatch();
     const history = useHistoryWithUTM();
-    const { isAuth } = useAppSelector(state => state.session);
+    const { isAuth } = useAppSelector((state) => state.session);
 
     const clickHandler = () => {
       if (isAuth) return history.push(authPath);
@@ -81,13 +82,14 @@ const BannerDesktop = memo(
             />
             {isActiveElement.image}
             <div className={bannerCardsStyle()}>
-              {bannerCards.map(card => (
+              {bannerCards.map((card) => (
                 <BannerCard
                   icon={card.icon}
                   title={card.title}
                   text={card.text}
                   isActive={
-                    JSON.stringify(card.image) === JSON.stringify(isActiveElement.image)
+                    JSON.stringify(card.image) ===
+                    JSON.stringify(isActiveElement.image)
                   }
                   onClick={() => setActiveElement(card)}
                 />
@@ -97,7 +99,7 @@ const BannerDesktop = memo(
         </Layout>
       </div>
     );
-  },
+  }
 );
 
 export default BannerDesktop;
@@ -107,14 +109,14 @@ type BannerCardProps = BannerCardSchema & {
   onClick: () => void;
 };
 
-const BannerCard: React.FC<BannerCardProps> = props => {
+const BannerCard: React.FC<BannerCardProps> = (props) => {
   const { icon, title, text, isActive, onClick } = props;
 
   const classNamesCardWrapper = [styles.bannerCard];
   if (isActive) classNamesCardWrapper.push(styles.active);
 
   return (
-    <div className={classNamesCardWrapper.join(' ')} onClick={onClick}>
+    <div className={classNamesCardWrapper.join(" ")} onClick={onClick}>
       {icon}
       <h4 className={styles.bannerCardTitle}>{title}</h4>
       <p className={styles.bannerCardText}>{text}</p>

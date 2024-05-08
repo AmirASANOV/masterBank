@@ -3,9 +3,10 @@ import React, { FC } from 'react';
 import styles from './Form.module.sass';
 
 import { useAppSelector } from '@/CustomHooks/useAppSelector';
-import CreditParameters from '@/Pages/ApplicationForm/FormStages/CreditParameters';
-import { HypothecForm } from '@/Pages/ApplicationForm/HypothecForm/HypothecForm';
+
 import { App } from '@/ProjectTypes/AppTypes';
+import CreditParameters from '@/app/ApplicationForm/FormStages/CreditParameters';
+import { HypothecForm } from '@/app/ApplicationForm/HypothecForm/HypothecForm';
 
 type FormProps = {
   hypothecPlace?: boolean;

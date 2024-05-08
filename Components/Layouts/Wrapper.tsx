@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+"use client";
+import React, { useRef } from "react";
 
 export interface WrapperProps {
   children?: React.ReactNode;
@@ -15,7 +16,7 @@ export interface WrapperProps {
 const Wrapper: React.FC<WrapperProps> = ({
   children,
   id,
-  className = '',
+  className = "",
   style,
   useWrapper,
   wrapperClassName,
@@ -25,16 +26,18 @@ const Wrapper: React.FC<WrapperProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const finalClassName = `${wrapperClassName || ''} ${
-    useWrapper || useWrapper === undefined ? 'wrapper-layout' : 'wrapper-without-layout'
-  } ${className} ${classNameAdd ? classNameAdd.join(' ') : ''}`;
+  const finalClassName = `${wrapperClassName || ""} ${
+    useWrapper || useWrapper === undefined
+      ? "wrapper-layout"
+      : "wrapper-without-layout"
+  } ${className} ${classNameAdd ? classNameAdd.join(" ") : ""}`;
 
   return (
     <div
       ref={ref}
       className={finalClassName.trim()}
       id={id}
-      style={{ overflow: hidden ? 'hidden' : 'visible', ...style }}
+      style={{ overflow: hidden ? "hidden" : "visible", ...style }}
       onClick={onClick}
       aria-hidden={!!hidden}
     >
