@@ -1,0 +1,43 @@
+.wrapper 
+    display: flex
+    flex-direction: column
+    text-align: center
+    font-family: 'Geologica'
+    padding-bottom: 30px 
+
+    .protectContainer
+        display: grid
+        grid-template-columns: 1fr 1fr
+        justify-content: space-between
+        column-gap: 20px
+
+        .item 
+          background: #F4F4FC
+          padding: 28px 12px
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: center
+          row-gap: 20px
+          border-radius: 5%
+
+          .img 
+            @media screen and (max-width: 767.8px)
+              height: 40px
+
+          .text 
+            font-size: 20px
+            width: 100%
+            margin: 0px auto
+
+            @media screen and (max-width: 767.8px)
+              font-size: 12px
+          
+    .protect 
+      margin-top: 20px
+      font-size: 16px
+      color: #6C6C6C
+      @media screen and (max-width: 767.8px)
+        font-size: 14px 
+        text-align: left
+      

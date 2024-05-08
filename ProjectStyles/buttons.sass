@@ -1,0 +1,154 @@
+@import "./variable"
+@import "./mixins/buttons"
+
+.btn-group
+  display: flex
+  width: 100%
+  padding: 0
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  margin-top: 32px
+  &__title
+    font-family: $font-main
+    display: flex
+    width: 100%
+    justify-content: center
+    margin-bottom: 11px
+    font-size: 17px
+    line-height: 17px
+    font-weight: 550
+
+.btn-fullwidth
+  width: 100%
+
+.btn-tinkoff
+  background-color: #FFDD2D
+  font-size: 18px
+  line-height: 18px
+  letter-spacing: 0.02em
+
+.btn-escape
+  @include btnEscapeTemplate($main-masterbank, $dark-text-color, $main-masterbank, white)
+  font-family: $main-font
+  font-size: 21px
+  line-height: 21px
+  font-weight: 700
+  color: white
+  border-radius: 12px
+  border: none
+  padding: 20px
+  cursor: pointer
+  transition: .2s
+  width: 100%
+  max-width: 360px
+  color: #D70F27
+  &:hover
+    opacity: 0.9
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px
+
+.btn-main
+  font-family: $main-font
+  font-size: 21px
+  line-height: 21px
+  font-weight: 700
+  color: white
+  border-radius: 12px
+  border: none
+  padding: 20px
+  background: #D70F27
+  cursor: pointer
+  transition: .2s
+  width: 100%
+  max-width: 360px
+  &:hover
+    opacity: 0.9
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px
+
+.btn-bold
+  font-weight: bold
+
+.btn-small
+  padding: 10px 20px
+  font-size: 16px
+
+.button-back
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  margin-bottom: 15px
+  margin-left: 15px
+  width: 100%
+  cursor: pointer
+
+.button-back__text
+  margin-top: 0
+  margin-bottom: 0
+  cursor: pointer
+  width: 100%
+  text-align: left
+
+.btn-group-children
+  margin: 0 !important
+  padding: 0 !important
+
+@keyframes btn-blick
+  0%
+    transform: translateX(-20em) skewX(-45deg)
+  15%
+    transform: translateX(50em) skewX(-45deg)
+  30%
+    transform: translateX(-20em) skewX(-45deg)
+  100%
+    transform: translateX(-20em) skewX(-45deg)
+
+@media screen and (max-width: $tablet-resolution) and (min-width: $mobile-width)
+  .btn
+    font-size: 18px
+
+@media screen and (min-width: $mobile-width)
+  .btn:not(:last-child)
+    margin-right: 20px
+
+  .btn-group.mr0
+
+    .btn
+      margin-right: 0
+
+  .btn-group
+    flex-wrap: nowrap
+
+@media screen and (max-width: $mobile-width - 1px)
+  .btn
+    padding: 15px 0
+    width: 100%
+    font-size: 18px
+
+  .btn:not(:last-child)
+    margin-bottom: 10px
+
+  .btn-group
+    flex-wrap: wrap
+
+  .btn-small
+    padding: 5px 10px
+    font-size: 14px
+    font-weight: 500
+
+@media (min-width: $mobile-width) and (max-width: $tablet-resolution)
+  .btn-group-children
+    grid-column-end: 2
+    grid-column-start: 2
+
+@media screen and (min-width: $tablet-resolution + 1px)
+  .btn-group-children
+    grid-column-start: 3
+    grid-column-end: 3
+
+@media screen and (min-width: $tablet-resolution)
+  .btn
+    font-size: 22px
+
+@media screen and (max-width: 800px)
+  .btn-main
+    min-width: 0px

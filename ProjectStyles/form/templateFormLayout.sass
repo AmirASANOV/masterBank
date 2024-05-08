@@ -1,0 +1,180 @@
+@import '../variable'
+
+#anketa-title
+  text-align: center
+  font-family: "Geologica", sans-serif
+  font-weight: 500
+  font-size: 28px
+  text-align: center
+  color: var(--sb-dark-text)
+
+@mixin grid-form-template()
+  display: grid
+  grid-column-gap: $grid-column-gap
+  grid-row-gap: 20px
+  grid-template-columns: repeat(3, minmax(30%, 1fr))
+
+@mixin template-layout()
+  position: relative
+  box-shadow: $input-shadow
+  border-radius: 5px
+  background: #FFF
+  width: 100%
+
+.wrapper-background
+  @include template-layout
+  padding: 24px
+
+.form-header
+  font-family: $main-font
+  font-style: normal
+  font-weight: 500
+  color: $main-black-support
+  font-size: 24px
+
+[data-full-grid="true"]
+  grid-column: 1 / -1
+
+.form-grid
+  display: grid
+  grid-column-gap: $grid-column-gap
+  grid-row-gap: 20px
+  grid-template-columns: repeat(3, minmax(30%, 1fr))
+
+.its-grid
+  @include grid-form-template
+
+//Первая форма
+@mixin first-form-template-layout()
+  #anketa-info, #contact-info
+    @include grid-form-template
+    grid-template-columns: 1fr 1fr
+    max-width: 740px
+    margin: 0 auto
+    padding: 24px 0px
+
+  @media screen and (max-width: $tablet-resolution)
+    #anketa-info, #contact-info
+      grid-template-columns: 1fr 1fr
+
+  @media screen and (max-width: $mobile-width - 1px)
+    #anketa-info, #contact-info
+      grid-template-columns: 100%
+
+//Вторая форма
+@mixin second-form-template-layout()
+  //.second-form
+  #passport-info,  #full-address, #reg-address, #contact__container
+    @include grid-form-template()
+    grid-template-columns: 1fr 1fr
+    max-width: 740px
+    margin: 0 auto
+  #passport-info
+    padding: 0
+  #passportHeader
+    text-align: center
+    .header-24
+      text-align: center
+      font-weight: 500
+      font-size: 28px
+      text-align: center
+      color: var(--sb-dark-text)
+  #reg-address
+    padding-left: 0
+    padding-right: 0 
+    .header-24
+      text-align: center
+      font-weight: 500
+      font-size: 28px
+      text-align: center
+      color: var(--sb-dark-text)
+
+  @media screen and (max-width: $tablet-resolution + 12px)
+    #passport-info,  #full-address, #reg-address, #contact__container
+      grid-template-columns: 1fr 1fr
+
+  @media screen and (max-width: $mobile-width - 1px)
+    #passport-info,  #full-address, #reg-address, #contact__container
+      grid-template-columns: 100%
+
+
+
+//Третья форма
+@mixin third-form-template-layout()
+  #workPlace-info, #workAddress-info, #work_additional_info
+    max-width: 740px
+    margin: 0 auto
+    @include grid-form-template()
+    grid-template-columns: repeat(2, 1fr)
+    padding: 0
+    .input-done
+      background-color: #eeefef 
+  #workPlaceHeader, #startWorkHeader, #workAddressHeader, #companyDescription, #workRegionCredit, #additional_header
+    grid-column: 1 / -1
+  #companyDescription
+    .header-24
+      font-weight: 500
+      font-size: 28px
+      text-align: center
+  #workAddress
+    .header-24
+      font-weight: 500
+      font-size: 28px
+      text-align: center
+  #startWorkCredit
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: $grid-column-gap
+    grid-column: 1 / -1
+    .input-done
+      background-color: #eeefef 
+  @media screen and (min-width: $tablet-resolution + 10px)
+    #address-suggestion-content
+      grid-row: 2 / 2
+
+  @media screen and (max-width: $tablet-resolution + 12px)
+    #workPlace-info, #workAddress-info, #work_additional_info
+      grid-template-columns: 1fr 1fr
+
+  @media screen and (max-width: $mobile-width - 1px)
+    #workPlace-info, #workAddress-info, #work_additional_info
+      grid-template-columns: 100%
+    #startWorkCredit
+      grid-column-gap: 15px
+
+
+//Четвертая форма
+@mixin fourth-form-template-layout()
+  #extra-info, #contacts, #confirm__container
+    @include grid-form-template()
+    grid-template-columns: repeat(2, 1fr)
+    .input-done
+      background-color: #eeefef 
+  #extra-info
+    padding: 0
+
+  #header
+    grid-column: 1 / -1
+    .header-24
+      font-weight: 500
+      font-size: 28px
+      text-align: center
+
+  @media screen and (max-width: $tablet-width)
+    #extra-info, #contacts
+      grid-template-columns: 1fr 1fr
+
+  @media screen and (max-width: $mobile-width - 1px)
+    #extra-info, #contacts
+      grid-template-columns: 1fr
+
+@mixin waiting-layout()
+  #waiting
+    @include template-layout()
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+
+@media (max-width: 767px)
+  #anketa-title
+    font-size: 18px 

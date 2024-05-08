@@ -1,0 +1,25 @@
+@import "variable"
+
+.checkbox
+  position: relative
+  display: block
+  min-width: 24px
+  min-height: 24px
+  max-width: 24px
+  max-height: 24px
+  flex-shrink: 1
+  margin-right: 20px
+  background: $empty_accept no-repeat center
+  background-size: contain
+
+
+.checkbox.checked
+  background: $check no-repeat center
+  background-size: contain
+
+.checkbox-container
+  display: flex
+  width: 100%
+  flex-wrap: nowrap
+  justify-content: flex-start
+  align-content: flex-start

@@ -1,0 +1,87 @@
+@import "src/ProjectStyles/variable"
+.modal
+  font-family: $font-sub-modal
+  min-width: 90%
+  background: #F8F8F8
+  overflow: auto
+  max-height: 90vmax
+  padding-top: 16px
+  padding-bottom: 24px
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    display: none
+
+  &__body
+
+  &__header
+    display: flex
+    width: 100%
+    justify-content: space-between
+    margin-bottom: 20px
+
+  &__content
+    min-height: 400px
+
+  &__exitButton
+    border: none
+    background: inherit
+  &__title
+    width: 100%
+    text-align: center
+    font-weight: 900
+    font-size: 24px
+    line-height: 120%
+    margin-bottom: 12px
+    color: #2E2E2E
+    white-space: pre-wrap
+
+  &__subtitle
+    font-weight: 500
+    font-size: 16px
+    line-height: 134%
+    color: #6F6F6F
+    white-space: pre-wrap
+    width: 100%
+    text-align: center
+
+.content
+  &__commonItem
+    display: flex
+    flex-direction: column
+    align-items: center
+    background: white
+    margin-bottom: 16px
+    padding: 15px 14px 19px
+    border-radius: 12px
+  &__stepsItem
+    display: flex
+    align-items: center
+
+.fw600
+  font-weight: 600
+
+.step
+  position: relative
+  display: flex
+  align-items: center
+  flex-direction: column
+  padding-top: 78px
+  &__number
+    position: absolute
+    font-weight: 900
+    font-size: 96px
+    line-height: 100%
+    color: #2E7EB1
+    top: 6px
+
+  &__text
+    position: relative
+    background: #FFFFFF
+    border-radius: 8px
+    width: 100%
+    text-align: center
+    font-weight: 900
+    font-size: 16px
+    line-height: 19px
+    padding: 16px 0
+    white-space: pre-wrap

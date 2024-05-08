@@ -1,0 +1,57 @@
+.clock
+  position: relative
+  border-radius: 50%
+  -webkit-border-radius: 50%
+  border: 2px solid rgba(242, 151, 39, 1)
+  flex-shrink: 0
+  -webkit-flex-shrink: 0
+
+  .clock-ball
+    position: absolute
+    top: 50%
+    left: 50%
+    background: rgba(242, 151, 39, 1)
+    transform: translateX(-50%) translateY(-50%)
+    border-radius: 50%
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+
+  .clock-arrow
+    position: absolute
+    top: 50%
+    left: 55%
+    background: rgba(242, 151, 39, 1)
+    transform: translateX(-50%) translateY(-100%)
+    animation: clockArrowAnimation linear infinite
+    -webkit-animation: clockArrowAnimation linear infinite
+    -moz-animation: clockArrowAnimation linear infinite
+    -o-animation: clockArrowAnimation linear infinite
+    transform-origin: -2px 50%
+    border-bottom-right-radius: 4px
+    -webkit-border-bottom-right-radius: 4px
+    -moz-border-radius-bottomright: 4px
+    border-top-right-radius: 4px
+    -webkit-border-top-right-radius: 4px
+    -moz-border-radius-topright: 4px
+
+
+.hours-arrow
+   width: 30%
+   animation-duration: 36s
+   -webkit-animation-duration: 36s
+   -moz-animation-duration: 36s
+   -o-animation-duration: 36s
+
+.minutes-arrow
+  width: 40%
+  animation-duration: 3s
+  -webkit-animation-duration: 3s
+  -moz-animation-duration: 3s
+  -o-animation-duration: 3s
+
+
+@keyframes clockArrowAnimation
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)

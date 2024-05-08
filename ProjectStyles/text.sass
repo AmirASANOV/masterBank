@@ -1,0 +1,580 @@
+@import 'variable'
+@import 'mixin'
+
+@mixin main-title
+  color: #1C1C1E
+  font-family: 'Geologica'
+  font-size: 28px
+  font-weight: 500
+  margin: 0
+  padding: 0
+
+@mixin main-text
+  color: #1C1C1E
+  font-family: 'Geologica'
+  font-size: 20px
+  font-weight: 400
+  margin: 0
+  padding: 0
+
+@mixin title-text
+  font-family: $font-main
+  font-style: normal
+  font-weight: 550
+  margin: 0
+  padding: 0
+
+
+.title-text
+  @include title-text
+
+.font-main
+  font-family: $main-font !important
+
+.font-support
+  font-family: $support-font !important
+
+.description-text
+  font-family: $font-support
+  font-style: normal
+  font-weight: normal
+  margin: 0
+  padding: 0
+  &.new_sobank
+    margin: 0 !important
+    font-family: Inter
+    font-size: 16px
+    line-height: 19px
+    font-weight: 500
+    @media screen and (max-width: $mobile-width - 1)
+      font-size: 12px
+      font-weight: 500
+      line-height: 15px
+
+.card-products_title
+  color: $main-black-support
+  font-size: 14px
+  white-space: pre-wrap
+  line-height: 14px
+  margin-bottom: 4px
+  font-weight: normal
+
+.card-products_subtitle
+  color: $main-gray-support
+  font-size: 13px
+  white-space: pre-wrap
+  line-height: 16px
+
+.component-how-work_title
+  text-align: center
+  color: $main-black-support
+
+.component-how-work_subtitle
+  font-size: 15px
+  color: $main-orange-support
+  margin-bottom: 10px
+  text-align: center
+
+.component-how-work_panel-text
+  font-size: 13px
+  line-height: 13px
+  color: $main-white
+  text-align: center
+
+.component-how-work_border-left-text
+  font-weight: normal
+  font-size: 11px
+  line-height: 11px
+  color: $main-black-support
+  text-align: left
+  padding: 20px 0 0 5px
+
+.component-how-work_border-right-text
+  font-weight: normal
+  font-size: 11px
+  line-height: 11px
+  display: flex
+  justify-content: flex-end
+  color: $main-black-support
+  text-align: right
+  padding: 50px 5px 0 0
+
+.information_title
+  color: $main-black-support
+  text-align: left
+  width: 100%
+
+.information_tariffs-title
+  @include information_tariffs
+  color: $main-black-support
+  font-family: $font-main
+
+.information_tariffs-description
+  @include information_tariffs
+  color: #5A5A5A
+  font-family: $font-support
+
+.information_tariffs-pdf-link
+  font-size: 13px
+  line-height: 16px
+  text-decoration: underline
+  color: $main-black-support
+  display: block
+  margin-left: 10px
+  white-space: pre-wrap
+
+.information_cities-text-capital
+  color: #5A5A5A
+  font-size: 13px
+  line-height: 16px
+  font-weight: 550
+
+.information_cities-test-city
+  list-style: disc
+  color: #5A5A5A
+  font-size: 13px
+  line-height: 16px
+  margin-left: 20px
+
+.information_panel-description-title
+  color: $main-black-support
+  font-size: 14px
+  line-height: 14px
+
+.information_panel-description-text
+  list-style: disc
+  font-size: 13px
+  line-height: 16px
+  color: #5A5A5A
+
+.modal-question__description-text
+  color: $main-black-support
+  text-align: left
+  font-weight: normal
+
+.circle-number__text
+  font-size: 24px
+  line-height: 1
+  color: $main-black-support
+  font-weight: 700
+  font-family: 'Geologica'
+
+.question_items-text
+  font-size: 14px
+  line-height: 14px
+  font-weight: normal
+  color: $main-black-support
+  cursor: pointer
+
+.step-container__description-text
+  font-family: 'Geologica'
+  display: block
+  width: 100%
+  color: $main-black-support
+  text-align: start
+  min-width: 100px
+  white-space: pre-wrap
+  font-size: 18px
+
+.footer_title
+  font-weight: normal
+  font-size: 15px
+  line-height: 15px
+  color: $main-black-support
+  margin-bottom: 12px
+  letter-spacing: -0.24px
+
+.footer_description-text-link
+  color: $main-gray-support
+  font-size: 13px
+  line-height: 16px
+  text-decoration: underline
+  cursor: pointer
+  &.new_sobank
+    @media screen and (max-width: $mobile-width - 1)
+      color: #319c4a
+      text-underline-offset: 3px
+      font-family: Inter
+      font-size: 14px
+      font-weight: 400
+      line-height: 17px
+
+.currency-container__currency_name
+  font-size: 14px
+  line-height: 14px
+  font-weight: normal
+  color: $main-black-support
+  display: flex
+  justify-content: space-between
+  -webkit-justify-content: space-between
+  align-items: center
+  -webkit-align-items: center
+
+.document-container__header
+  font-family: $main-font
+  width: 100%
+  text-align: center
+  margin-top: 0
+  font-size: 20px
+  color: rgba(30, 30, 30, .8)
+
+.document-container__important-text
+  font-family: $main-font
+  font-size: 16px
+  color: rgba(30, 30, 30, .8)
+  line-height: 1.5
+  margin-bottom: 10px
+  text-align: left
+  width: 100%
+  margin-top: 0
+// ----------------------------------------------------------------------------------------------------------------------
+
+.text-not-underlined__onbank
+  @include textNotUnderlined($main-black-support)
+  @include underline($main-orange)
+
+.text-not-underlined__sovbank,
+.text-not-underlined__cc_sobank,
+.text-not-underlined__pro,
+.text-not-underlined__masterbank
+  @include textNotUnderlined($main-black-support)
+  @include underline($main-sovbank)
+.text-not-underlined__masterbank
+  @include underline($main-masterbank)
+.text-not-underlined__new_sobank
+  font-family: Inter
+  color: #5e6165
+  font-size: 18px
+  line-height: 22px
+  font-weight: 500
+.text-not-underlined__sop
+  @include textNotUnderlined($main-black-support)
+  @include underline($main-sovbank)
+
+.text-not-underlined__kk_sobank
+  @include textNotUnderlined($main-black-support)
+  @include underline($main-kk_sobank)
+
+.text-not-underlined__first_credit
+  @include textNotUnderlined($main-black-support)
+  @include underline($main-first_credit)
+
+.description-link
+  text-decoration: underline
+  cursor: pointer
+
+  &:hover
+    color: $link-color
+
+.text-underlined
+  font-family: $main-font
+  font-style: normal
+  font-weight: 500
+  font-size: 18px
+  color: $main-black-support
+  border-bottom: 2px solid #F29727
+  white-space: nowrap
+  cursor: pointer
+
+.header-22
+  font-family: $support-font
+  font-weight: 550
+  font-size: 22px
+  line-height: 1
+  font-style: normal
+  width: 100%
+
+.span-error
+  font-family: $support-font
+  font-size: 12px
+  color: $danger-color
+  font-weight: 700
+  display: block
+  margin-top: 5px
+  padding: 8px
+  margin-bottom: 0
+
+.span-hint
+  font-family: $support-font
+  font-size: 12px
+  color: $text-color
+  font-weight: 700
+  display: block
+  margin-top: 5px
+  padding: 8px
+
+.agreement-text
+  font-family: $main-font
+  font-weight: 400
+  font-size: 12px
+  line-height: 130%
+  color: #717171
+
+.agreement-text-decoration
+  padding: 0
+  margin: 0
+
+  border: none
+  outline: none
+
+  background-color: transparent
+
+  color: inherit
+  font-weight: 600
+  text-decoration: underline
+
+  cursor: pointer
+
+.header-24
+  font-family: $main-font
+  color: $header-color
+  line-height: 1
+  font-size: 24px
+  margin: 0
+  width: 100%
+  font-weight: 500
+
+.text-component
+  width: 100%
+  text-align: center
+  font-size: 16px
+  color: $text-color
+  font-family: $main-font
+
+.table-text
+  display: block
+  font-size: 20px
+  line-height: 22px
+  color: $text-color
+  text-align: center
+  font-family: $main-font
+
+.document-text
+  font-family: $main-font
+  font-size: 14px
+  color: $text-color
+
+.document-link
+  font-family: $main-font
+  font-size: 14px
+  color: $link-color
+  font-size: inherit
+
+.link-color
+  color: $link-color
+  font-size: inherit
+  font-family: inherit
+
+.link-action
+  cursor: pointer
+
+  &:hover
+    color: $main-blue
+
+.deposit-header-description
+  font-family: $support-font
+  font-size: 20px
+  width: 100%
+  text-align: center
+  color: $gray-color
+  font-weight: 500
+  margin: 0 0 10px 0
+
+.deposit-description
+  font-family: $main-font
+  font-size: 22px
+  text-align: center
+  color: black
+  width: 100%
+  font-weight: 400
+  margin: 0
+
+.subtitle
+  font-size: 18px
+  font-weight: 400
+  font-family: $support-font
+  font-style: normal
+  text-align: left
+  line-height: 1.2
+  color: rgba(28, 28, 30, 1)
+  display: block
+
+.bold-text
+  font-weight: 600
+  color: inherit
+
+.no-white-space
+  white-space: normal
+
+.timer-text
+  font-size: 30px
+  font-weight: 700
+  font-style: normal
+  font-family: $support-font
+
+.fw500
+  font-weight: 500
+
+.fw550
+  font-weight: 550
+
+.header-26, .header-26-24-17
+  font-size: 26px
+  font-family: $support-font
+  font-weight: 500
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $main-black-support
+
+.description-22
+  font-size: 22px
+  font-family: $main-font
+  font-weight: 400
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $description-color
+
+.description-20
+  display: block
+  font-size: 20px
+  font-family: $support-font
+  font-weight: 400
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $header-color
+
+  &.gray
+    color: $main-gray-support
+
+.label-20
+  font-size: 20px
+  font-family: $main-font
+  font-weight: 400
+  font-style: normal
+  line-height: 1
+  width: 100%
+  padding: 0
+  color: $main-black-support
+  margin: 0 0 8px 0
+
+.header-30
+  font-size: 30px
+  font-family: $support-font
+  font-weight: 500
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $main-black-support
+
+.description-18
+  display: block
+  font-size: 18px
+  font-family: $main-font
+  font-weight: 400
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $gray-color
+
+.description-15
+  display: block
+  font-size: 15px
+  font-family: $main-font
+  font-weight: 400
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $gray-color
+
+.subheader-18
+  font-size: 18px
+  font-family: $support-font
+  font-weight: 500
+  font-style: normal
+  line-height: 1
+  width: 100%
+  margin: 0
+  padding: 0
+  color: $header-color
+
+.counter-text
+  color: transparent
+  -webkit-text-fill-color: transparent
+  -webkit-text-stroke: 3px $burger-line-color
+  transition: all .3s
+  font-size: 56px
+  font-family: $support-font
+  font-weight: 550
+  margin: 0
+
+  &.onbank
+    -webkit-text-stroke: 3px $burger-line-color !important
+  &.sovbank,
+  &.cc_sobank,
+  &.sop,
+  &.new_sobank
+    -webkit-text-stroke: 3px $main-sovbank-blue !important
+  &.kk_sobank
+    -webkit-text-stroke: 3px $sub-kk_sobank !important
+  &.first_credit
+    -webkit-text-stroke: 3px $main-first_credit
+  &.masterbank
+    -webkit-text-stroke: 3px $support-masterbank !important
+
+  &:hover
+    -webkit-text-stroke: 3px $orange-color-opacity
+    color: $orange-color-opacity
+    cursor: pointer
+    opacity: 1
+
+@media screen and (max-width: $tablet-resolution) and (min-width: $mobile-width)
+  .header-26, .header-30
+    font-size: 24px
+  .description-20
+    font-size: 17px
+  .description-18
+    font-size: 16px
+  .header-24
+    font-size: 20px
+
+@media screen and (max-width: $mobile-width - 1px)
+  .document-important-text, .description-18, .description-15
+    font-size: 13px
+  .document-text, .document-link
+    font-size: 12px
+  .header-24
+    font-size: 15px
+  .deposit-header-description, .deposit-description
+    font-size: 11px
+  .subtitle, .description-item-text
+    font-size: 15px
+  .header-26, .header-30
+    font-size: 17px
+  .label-20, .description-20, .subheader-18
+    font-size: 14px
+  .label-20
+    margin-bottom: 4px
+  .text-not-underlined
+    font-size: 15px
+    line-height: 15px
+  .table-text
+    font-weight: normal
+    font-size: 13px
+    line-height: 16px
+  .step-container__description-text
+    font-size: 16px

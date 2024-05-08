@@ -1,0 +1,51 @@
+@import '@/ProjectStyles/variable'
+
+.wrapper
+  padding: 48px 0
+
+ 
+      
+
+.buttonToggle
+  font: $t-h3
+  color: #7A7A7A
+  padding: 4px 12px
+  background: none
+  border: none
+  cursor: pointer
+  transition: .1s
+  font-weight: 600
+  border-bottom: 2px solid transparent
+
+  &:hover
+    color: #ed3c5b
+
+.title
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 28px
+  font-weight: 500
+  margin: 0
+  padding-bottom: 24px
+  text-align: center
+  @media screen and (max-width: 767.8px)
+    text-align: left
+  
+
+.linkButtons
+  display: flex
+  justify-content: center
+  max-width: 700px
+  margin: 0 auto
+  padding-bottom: 24px
+  @media screen and (max-width: 767.8px)
+    justify-content: flex-start
+  
+ 
+
+@media (max-width: 600px)
+  .buttonToggle
+    font-size: 18px
+  .linkButtons
+    justify-content: flex-start
+    align-items: center

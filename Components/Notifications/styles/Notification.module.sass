@@ -1,0 +1,87 @@
+@import "@/ProjectStyles/variable"
+
+.notification-item
+  display: flex
+  width: $notification-desktop-width
+  padding: 0
+  background: linear-gradient(90deg, rgba(227, 234, 250, 1), rgba(255, 255, 255, 1))
+  min-height: 60px
+  border-radius: 8px
+  box-shadow: 0 0 10px $text-color
+  animation: renderNotification .5s ease-out
+  position: relative
+  overflow: hidden
+  z-index: 100000
+  transition: all .5s
+
+  &:not(:first-child)
+    margin-top: 20px
+
+  &.deleted
+    transform: translateX(120%)
+    transition: transform .5s
+
+.notification-bar
+  position: absolute
+  border-radius: 8px
+  width: 8px
+  bottom: 0
+  left: 0
+  background: $main-blue
+
+.notification-body
+  padding: 15px 40px 15px 25px
+
+.notification-content
+  font-size: 16px
+  font-family: $main-font
+
+.notification-close
+  position: absolute
+  top: 6px
+  right: 6px
+  height: 25px
+  width: 25px
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  background-color: rgba(196, 196, 196, 1)
+  border-radius: 50%
+
+.notification-close-first-line
+  position: absolute
+  width: 15px
+  height: 2px
+  transform: rotate(45deg)
+  background-color: white
+
+.notification-close-second-line
+  position: absolute
+  width: 15px
+  height: 2px
+  transform: rotate(-45deg)
+  background-color: white
+
+.notification-close:hover
+  transform: rotate(360deg)
+  transition: all .7s
+
+@media screen and (max-width: $tablet-width)
+  .notification-content
+    font-size: 14px
+  .notification-item
+    width: $notification-tablet-width !important
+
+@media screen and (max-width: $mobile-width - 1px) and (min-width: 300px)
+  .notification-item
+    width: $notification-mobile-width !important
+
+  .notification-content
+    font-size: 13px !important
+
+@keyframes renderNotification
+  0%
+    transform: translateX($notification-desktop-width)
+  100%
+    transform: translateX(0)

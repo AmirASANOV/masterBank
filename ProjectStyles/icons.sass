@@ -1,0 +1,132 @@
+@import "variable"
+
+.advantage-icon-container
+  width: 31px !important
+  height: 31px !important
+
+.icon-credit-card
+  width: 40px !important
+  height: 31px !important
+
+//  =====================================================================================================================
+// waiting icon
+.lds-ring
+  display: inline-block
+  position: absolute
+  top: 15px
+  right: 10px
+  width: 24px
+  height: 24px
+  z-index: 100000000 !important
+
+.lds-ring span
+  box-sizing: border-box
+  display: block
+  position: absolute
+  width: 20px
+  height: 20px
+  border: 2px solid
+  border-radius: 50%
+  flex-shrink: 0
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite
+  border-color: #F37807 transparent transparent transparent
+
+.lds-ring span:nth-child(1)
+  animation-delay: -0.45s
+
+.lds-ring span:nth-child(2)
+  animation-delay: -0.3s
+
+.lds-ring span:nth-child(3)
+  animation-delay: -0.15s
+
+.icon
+  position: absolute
+  width: 10px
+  height: 10px
+  right: 20px
+  bottom: 20px
+  background-color: transparent
+  border-left: 2px solid $text-color
+  border-bottom: 2px solid $text-color
+  transform: rotate(-45deg)
+  transition: transform $animation-default-timing
+
+.icon-complete
+  position: absolute
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  background: $complete center
+  background-size: contain
+  right: 20px
+  bottom: 16px
+  animation: scaleIcon 1s ease-in-out forwards
+
+.icon-error
+  position: absolute
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  background: $reject center
+  background-size: contain
+  right: 20px
+  bottom: 16px
+  animation: scaleIconError 1s ease-in-out forwards
+  &.cc_sobank, &.sovbank
+    display: none
+
+.result-image
+  width: 100%
+  height: 100%
+
+.arrow
+  position: relative
+  display: block
+  width: 25px
+  height: 2px
+  margin-right: 10px
+  background: $text-color
+
+  &:before
+    content: ''
+    transform-origin: top left
+    background: $text-color
+    position: absolute
+    width: 10px
+    height: 2px
+    transform: rotate(-35deg)
+
+  &:after
+    content: ''
+    transform-origin: bottom left
+    background: $text-color
+    position: absolute
+    width: 10px
+    height: 2px
+    transform: rotate(35deg)
+
+@keyframes lds-ring
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+@keyframes scaleIcon
+  0%
+    transform: scale(1)
+  60%
+    transform: scale(1.2)
+    box-shadow: 0 0 10px $main-blue
+  100%
+    transform: scale(1)
+
+@keyframes scaleIconError
+  0%
+    transform: scale(1)
+  60%
+    transform: scale(1.2)
+    box-shadow: 0 0 10px $danger-color
+  100%
+    transform: scale(1)

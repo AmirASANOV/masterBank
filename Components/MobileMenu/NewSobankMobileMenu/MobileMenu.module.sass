@@ -1,0 +1,143 @@
+@import "@/ProjectStyles/variable"
+
+.modalContainer
+  position: fixed
+  z-index: 1200
+  overflow: hidden
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  display: flex
+  justify-content: center
+  -webkit-justify-content: center
+  align-items: center
+  -webkit-align-items: center
+
+.mobile-menu
+  position: fixed
+  right: 0
+  width: 100%
+  top: 0
+  min-height: 236px
+  max-height: 236px
+  background: #FFFFFF
+  transition: all .5s ease-out
+  transform: translateY(-100%)
+  z-index: 10
+  &__layout
+    overflow: auto
+    width: 100%
+    height: 73.75vw
+    padding: 0 20px 16px
+
+  &.active
+    transform: translateY(60px)
+    transition: all .5s
+
+.mobile-menu__table
+  display: flex
+  flex-direction: column
+  gap: 13px
+  padding: 9px 0
+
+.mobile-menu__circle
+  cursor: pointer
+  position: fixed
+  top: 13px
+  right: 2px
+  transform: translateX(-50%)
+  transition: transform .5s
+  width: 40px
+  height: 36px
+  background: transparent
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  overflow: hidden
+  z-index: 1200
+
+  &.hidden
+    transform: translate(-50%, 150%)
+
+.mobile-menu__burger
+  position: relative
+
+  &, &:before, &:after
+    background: #319c4a
+    width: 24px
+    height: 2px
+    border-radius: 10px
+
+  &:before, &:after
+    content: ''
+    position: absolute
+    transition: all .5s
+
+  &:before
+    top: 8px
+
+  &:after
+    width: 18px
+    right: 0
+    top: -8px
+
+  &.active
+    height: 0
+
+  &.active:before, &.active:after
+    transform-origin: center
+    top: -1px
+
+  &.active:before
+    transform: rotate(-45deg)
+
+  &.active:after
+    width: 24px
+    transform: rotate(45deg)
+
+.mobile-menu_text
+  font-family: $font-support
+  color: $main-black-support
+  font-size: 14px
+  line-height: 14px
+  width: 100%
+  margin: 0
+  padding: 0
+.mobileMenu_item
+  display: flex
+  border: none
+  align-items: center
+  background-color: transparent
+  padding-left: 36px
+  margin: 0
+  background-position: 6px center
+  background-repeat: no-repeat
+  background-size: contain
+  min-height: 24px
+  &__text
+    color: #5e6165
+    font-family: Inter
+    font-size: 18px
+    font-weight: 500
+    line-height: 100%
+
+[id = mobile_menu_item_0]
+  background-image: url("../../../Assets/header/c-card.png")
+[id = mobile_menu_item_1]
+  background-image: url("../../../Assets/header/c-cash.svg")
+[id = mobile_menu_item_2]
+  background-image: url("../../../Assets/header/card.svg")
+[id = mobile_menu_item_3]
+  background-image: url("../../../Assets/header/unsubscribe.svg")
+[id = mobile_menu_item_4]
+  background-image: url("../../../Assets/header/home.svg")
+[id = mobile_menu_item_5]
+  background-image: url("../../../Assets/header/log-in.svg")
+
+@media screen and (min-width: 768px)
+  .mobile-menu_text
+    font-size: 20px
+    line-height: 20px
+

@@ -1,0 +1,62 @@
+@import '@/ProjectStyles/variable'
+
+.container
+  display: flex
+  gap: 20px
+
+.wrapper
+  border-radius: 24px
+  background-color: #FFFAEE
+  padding: 48px
+  width: 100%
+
+.title
+  font: $t-h1
+  padding-bottom: 24px
+
+.titleMini
+  font: $t-h4
+  font-weight: 400
+
+.tableItem
+  margin-bottom: 12px
+  border-radius: 8px
+  padding: 12px 16px
+  background-color: #EEEFEF
+  display: grid
+  grid-template-columns: 2fr 1fr 1fr
+
+.tableItemText
+  font: $t-h4
+  font-weight: 400
+
+.tableTitles
+  display: grid
+  grid-template-columns: 2fr 1fr 1fr
+  padding-bottom: 18px
+
+@media (max-width: 1100px)
+  .container
+    flex-direction: column
+    align-items: center
+
+@media (max-width: 767px)
+  .wrapper
+    padding: 0
+    background-color: transparent 
+  .title
+    font-size: 18px
+  .titleMini
+    font-size: 14px
+    text-align: right
+    &:last-child
+      padding-right: 10px 
+  .tableTitles
+    padding-bottom: 18px
+    gap: 18px
+  .tableItem
+    gap: 18px
+  .tableItemText
+    &:not(:first-child)
+      text-align: right
+    font-size: 14px

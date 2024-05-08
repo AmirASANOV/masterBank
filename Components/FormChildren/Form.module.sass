@@ -1,0 +1,26 @@
+@import '@/ProjectStyles/text'
+.wrapper
+  border-radius: 16px
+  padding: 24px
+
+.title
+  @include main-title
+  padding-bottom: 12px
+  text-align: center
+
+.description
+  @include main-text
+  padding-bottom: 40px
+  text-align: center
+  margin-bottom: 20px
+
+@media (max-width: 600px)
+  .title
+    font-size: 18px
+    text-align: left
+
+  .description
+    font-size: 14px
+    text-align: left
+    padding: 0
+    color: #6c6c6c

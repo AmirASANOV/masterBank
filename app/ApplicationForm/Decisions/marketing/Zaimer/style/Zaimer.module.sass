@@ -1,0 +1,176 @@
+
+$box-sh: 0 2px 5px rgba(38, 53, 104, 0.25)
+$br: 15px
+$ff: 'Geologica', sans-serif
+
+.zaimer
+  max-width: 100vw
+  min-height: 100vh
+  background-color: #F5FAFF
+  font-family: $ff
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  &__body
+    overflow: hidden
+    max-width: 1140px
+    margin: 0 auto
+    width: 100%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    padding: 0 5px 20px
+    @media (max-width: 1040px)
+      max-width: 680px
+    @media (max-width: 767px)
+      max-width: 288px
+
+  &__image
+    margin-bottom: 24px
+    @media (max-width: 767px)
+      width: 182px
+      height: 65px
+      margin-bottom: 8px
+
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  &__title
+    background: #FFFFFF
+    box-shadow: $box-sh
+    border-radius: $br
+    text-align: center
+    width: 100%
+    padding: 24px 0
+    margin-bottom: 40px
+    @media (max-width: 1040px)
+      padding: 16px 0
+      margin-bottom: 24px
+    @media (max-width: 767px)
+      padding: 12px 0
+      margin-bottom: 20px
+
+    h2
+      margin: 0 auto
+      font-size: 24px
+      line-height: 29px
+      @media (max-width: 1040px)
+        font-size: 20px
+        line-height: 24px
+        max-width: 500px
+      @media (max-width: 767px)
+        font-size: 16px
+        line-height: 20px
+        max-width: 200px
+        white-space: pre-line
+
+  &__content
+    padding: 40px 80px
+    background: #FFFFFF
+    box-shadow: $box-sh
+    border-radius: $br
+    @media (max-width: 1040px)
+      padding: 40px 40px
+    @media (max-width: 767px)
+      padding: 16px 16px
+
+  &__row
+    display: flex
+    align-items: center
+    margin-bottom: 16px
+    position: relative
+    height: 98px
+
+    &:nth-child(3)
+      @media (max-width: 767px)
+        height: 83px
+
+    &:nth-child(4)
+      @media (max-width: 767px)
+        height: 67px
+
+    @media (max-width: 1040px)
+      height: 73px
+    @media (max-width: 767px)
+      height: 49px
+      align-items: flex-end
+
+  &__num
+    font-weight: 700
+    font-size: 80px
+    line-height: 98px
+    color: #A9D4FF
+    position: absolute
+    top: 0
+    left: 0
+    @media (max-width: 1040px)
+      font-size: 60px
+      line-height: 73px
+    @media (max-width: 767px)
+      font-size: 40px
+      line-height: 49px
+
+  &__description
+    position: relative
+    z-index: 1
+    margin-left: 64px
+    font-weight: 600
+    font-size: 26px
+    line-height: 32px
+    @media (max-width: 1040px)
+      font-size: 22px
+      line-height: 27px
+      margin-left: 58px
+    @media (max-width: 767px)
+      white-space: pre-line
+      margin-left: 35px
+      font-weight: 500
+      font-size: 14px
+      line-height: 17px
+
+  &__btnBlock
+    max-width: 512px
+    margin: 32px auto 0
+    @media (max-width: 767px)
+      margin: 24px auto 0
+
+  &__btn
+    border: none
+    width: 100%
+    background: #62B0FF
+    border-radius: 25px
+    margin-bottom: 16px
+
+    a
+      display: inline-block
+      width: 100%
+      padding: 20px 0
+      color: #FFFFFF
+      font-weight: 700
+      font-size: 26px
+      line-height: 32px
+      @media (max-width: 1040px)
+        padding: 16px 0
+      @media (max-width: 767px)
+        font-size: 20px
+        line-height: 24px
+
+  &__link
+    display: block
+    border: none
+    background: transparent
+    margin: 0 auto
+    font-size: 18px
+    line-height: 22px
+    cursor: pointer
+    color: #4265A9
+    &:hover
+      text-decoration: underline
+    @media (max-width: 767px)
+      font-size: 14px
+      line-height: 17px

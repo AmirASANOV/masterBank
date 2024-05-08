@@ -1,0 +1,28 @@
+@use '@/ProjectStyles/variable'
+
+.modal
+  padding: 0 17px 15px
+  display: flex
+  flex-direction: column
+  align-items: center
+  @media (max-width: variable.$mobile-width - 1px)
+    padding: 0
+
+  &__title
+    margin: 0
+    font-size: 24px
+    padding-bottom: 25px
+    @media (max-width: variable.$mobile-width - 1px)
+      font-size: 18px
+      padding-bottom: 16px
+
+  p
+    margin: 0
+    padding-top: 15px
+    padding-bottom: 40px
+    font-size: 18px
+    text-align: center
+    font-family: variable.$font-support
+    @media (max-width: variable.$mobile-width - 1px)
+      padding-bottom: 25px
+      font-size: 14px

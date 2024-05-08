@@ -1,0 +1,77 @@
+@use '@/ProjectStyles/variable'
+.title
+  margin: 0
+  font-size: 24px
+  line-height: 24px
+  text-align: center
+  max-width: 430px
+  font-weight: 700
+  padding-bottom: 24px
+  @media (max-width: variable.$tablet-resolution)
+    font-size: 20px
+    max-width: 380px
+  @media (max-width: variable.$mobile-width - 1px)
+    font-size: 14px
+    line-height: 14px
+    max-width: 100%
+    padding-bottom: 12px
+
+.subtitle
+  margin: 0
+  font-size: 20px
+  line-height: 20px
+  text-align: center
+  font-weight: 550
+  padding-bottom: 12px
+  @media (max-width: variable.$tablet-resolution)
+    font-size: 18px
+  @media (max-width: variable.$mobile-width - 1px)
+    font-size: 12px
+    line-height: 12px
+
+.column
+  margin-bottom: 24px
+  padding: 25px 40px
+  width: 100%
+  box-shadow: 0 5px 10px rgba(0, 20, 71, 0.2), inset 0 0 5px rgba(0, 20, 71, 0.2)
+  border-radius: 10px
+  @media (max-width: variable.$tablet-resolution)
+    padding: 25px 20px
+  @media (max-width: variable.$mobile-width - 1px)
+    box-shadow: none
+    border-radius: 0
+    padding: 15px 37px
+    margin-bottom: 0
+  &__first
+    border-top: 1px solid #DEDFEF
+    border-bottom: 1px solid #DEDFEF
+  &__second
+    margin-bottom: 20px
+
+.row
+  display: flex
+  justify-content: space-between
+  @media (max-width: variable.$mobile-width - 1px)
+    width: 300px
+    justify-content: flex-start
+    margin-left: -10px
+
+.circle
+  position: relative
+  width: 75px
+  height: 75px
+  border-radius: 50%
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: #fff
+  box-shadow: 0 2px 5px rgba(38, 53, 104, 0.25)
+  img
+    @media (max-width: variable.$mobile-width - 1px)
+      max-width: 90%
+      height: auto
+
+  @media (max-width: variable.$mobile-width - 1px)
+    width: 63px
+    height: 63px
+    margin-left: -10px

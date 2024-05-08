@@ -1,0 +1,95 @@
+.getCardWrapper
+  margin: 0
+  @media screen and (min-width: 768px)
+    padding: 56px 150px
+  @media screen and (max-width: 767.8px)
+    padding: 32px 20px
+  &__getCard
+    display: flex
+    flex-direction: column
+    @media screen and (min-width: 768px)
+      gap: 40px
+      align-items: center
+    @media screen and (max-width: 767.8px)
+      gap: 16px
+.content
+  display: flex
+  flex-direction: column
+  @media screen and (min-width: 768px)
+    gap: 64px
+    align-items: center
+  @media screen and (max-width: 767.8px)
+    gap: 16px
+.title
+  color: #5e6165
+  font-family: Inter
+  font-weight: 500
+  @media screen and (min-width: 768px)
+    font-size: 28px
+    line-height: 34px
+  @media screen and (max-width: 767.8px)
+    font-size: 18px
+    line-height: 22px
+.stages
+  display: flex
+  @media screen and (min-width: 768px)
+    flex-direction: row
+    padding-top: 4px
+  @media screen and (max-width: 767.8px)
+    flex-direction: column
+    gap: 20px
+  &__item
+    width: 100%
+    display: flex
+    align-items: center
+    @media screen and (min-width: 768px)
+      flex-direction: column
+      gap: 16px
+    @media screen and (max-width: 767.8px)
+      padding: 4px 0
+      flex-direction: row
+      gap: 12px
+      position: relative
+      &:not(:first-child)
+        &:after
+          content: ''
+          rotate: 90deg
+          position: absolute
+          width: 20px
+          height: 2px
+          background-color: #DCE7DE
+          left: 6px
+          top: -12px
+.item
+  &__count
+    background-color: #ecf6ee
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: Inter
+    color: #787878
+    line-height: 100%
+    @media screen and (min-width: 768px)
+      width: 64px
+      height: 64px
+      font-size: 32px
+      font-weight: 600
+    @media screen and (max-width: 767.8px)
+      min-width: 32px
+      min-height: 32px
+      font-size: 18px
+      font-weight: 500
+  &__text
+    color: #787878
+    font-family: Inter
+    font-weight: 500
+    @media screen and (min-width: 768px)
+      padding: 0 20px
+      text-align: center
+      font-size: 21px
+      line-height: 135%
+    @media screen and (max-width: 767.8px)
+      text-align: start
+      font-size: 16px
+      line-height: 130%

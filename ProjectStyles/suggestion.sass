@@ -1,0 +1,39 @@
+@import "./variable"
+
+.suggestion-info
+  font-family: "Geologica"
+  border-radius: 12px
+  background-color: #E7F9ED
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  padding: 24px 10px
+  font-size: 16px
+  &.cc_sobank
+    padding: 16px 12px
+    background: #FFFFFF
+    box-shadow: 0 0 4px 4px rgba(120, 225, 118, 0.37)
+    border-radius: 5px
+
+
+  .suggestion-item
+    font-size: 15px
+    color: $text-color
+    font-family: $main-font
+    &.cc_sobank
+      font-weight: 400
+      font-size: 15px
+      line-height: 15px
+      color: #000000
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+@keyframes suggestion
+  from
+    opacity: 0
+  to
+    opacity: 1

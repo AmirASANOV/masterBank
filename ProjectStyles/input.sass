@@ -1,0 +1,89 @@
+@import 'variable'
+@import "mixin"
+
+.input-container
+  position: relative
+  width: 100%
+
+.input-component-container
+  position: relative
+  width: 100%
+  label
+    width: 100%
+    top: 0
+    left: 8px
+
+@keyframes inputAnimation
+  from
+    opacity: 0
+    transform: scale(0.9)
+  to
+    opacity: 1
+    transform: scale(1)
+
+.inputAnimation
+  animation: inputAnimation ease-out .5s
+
+.label
+  position: absolute
+  z-index: 10
+  left: 12px
+  right: 12px
+  top: 8px
+  font-family: $font-main
+  font-size: 14px
+  font-weight: 400
+  color: #717171
+  cursor: pointer
+
+.label-select
+  pointer-events: none
+
+.main-input
+  line-height: 22px
+  max-width: 100%
+  border-radius: 12px
+  width: 100%
+  // min-width: 300px
+  padding-top: 31px
+  padding-bottom: 8px
+  padding-right: 28px
+  padding-left: 12px
+  border: none
+  transition: box-shadow .2s
+  cursor: pointer
+  background-color: #eeefef
+  font-family: "Geologica", sans-serif
+
+.input__select__masterbank
+  font-family: "Geologica", sans-serif
+
+
+.main-input:focus
+  outline: none
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px
+
+.textarea
+  width: 100%
+  height: 100%
+  background: #FFFFFF
+  border: 1px solid #F29727
+  box-sizing: border-box
+  border-radius: 5px
+  resize: none
+  margin-bottom: 8px
+  padding: 8px
+  font-family: $main-font
+  font-style: normal
+  font-weight: normal
+  font-size: 13px
+  color: #6C6C6C
+
+.input
+  @include inputMain
+
+@keyframes bluring
+  0%
+    background-position: 200% 0
+  100%
+    background-position: 0 0

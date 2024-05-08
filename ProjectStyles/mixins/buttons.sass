@@ -1,0 +1,49 @@
+@import "../variable"
+
+@mixin btnEscapeTemplate($color, $text__color, $hover__background, $hover__text-color)
+  &
+    border: 2px solid $color
+    background: white
+    color: $text__color
+    transition: all .5s ease-out
+
+    &:hover
+      background: $hover__background
+      color: $hover__text-color
+
+  @media screen and (max-width: $tablet-resolution) and (min-width: $mobile-width)
+    &
+      padding: 14px 40px
+      font-size: 16px
+
+  @media screen and (max-width: $mobile-width - 1px)
+    &
+      width: 100%
+      padding: 10px
+      color: #717171
+      position: relative
+      border: 1px solid #FFFFFF
+      &:hover
+        background-color: #FFFFFF
+        color: #717171
+
+
+@mixin btnTemplate($color, $text__color)
+  color: $text__color
+  padding: 16px 58px
+
+  &:hover
+    box-shadow: 6px 6px 4px #{$color}
+    -webkit-box-shadow: 6px 6px 4px #{$color}
+    -moz-box-shadow: 6px 6px 4px #{$color}
+    -o-box-shadow: 6px 6px 4px #{$color}
+
+  @media screen and (max-width: $tablet-resolution) and (min-width: $mobile-width)
+    &
+      padding: 14px 40px
+      font-size: 16px
+
+  @media screen and (max-width: $mobile-width - 1px)
+    &
+      width: 100%
+      padding: 10px

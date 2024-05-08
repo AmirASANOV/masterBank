@@ -1,0 +1,103 @@
+@import '@/ProjectStyles/variable'
+
+.section
+  padding: 48px 0
+
+.wrapper
+  display: flex
+  justify-content: space-between
+
+.wrapperItem
+  position: relative
+  // display: flex
+  width: max-content
+  // flex: 1 1 60%
+
+.title
+  font: $t-h1
+  color: #1c1c1e
+  padding-bottom: 12px
+  text-align: center
+
+.text
+  font: $t-h4
+  color: #6C6C6C
+  font-size: 18px
+  font-weight: 500
+  padding-bottom: 40px
+  text-align: center
+
+.text2
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 18px
+  font-weight: 400
+  margin: 0
+  padding-bottom: 40px
+
+.decor
+  position: absolute
+  top: 0
+  left: 0
+  transform: translateX(-100%)
+  width: 200%
+
+.decorItem
+  gap: 12px
+  display: flex
+  max-width: 200px
+
+.decorLine
+  width: 100%
+  object-fit: contain
+
+.cards
+  display: flex
+  gap: 16px
+  padding-bottom: 40px
+
+.card
+  width: 280px
+  padding: 12px
+  background-color: #E1E8D5
+  border-radius: 8px
+
+.cardTitle
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 18px
+  font-weight: 400
+  margin: 0
+  padding-bottom: 8px
+
+.cardText
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 16px
+  font-weight: 400
+  margin: 0
+  padding: 0
+
+@media (max-width: 1100px)
+  .wrapper
+    flex-direction: column
+    align-items: center
+  .cards
+    flex-direction: column
+    padding-left: 50px
+  .decor
+    transform-origin: left
+    position: absolute
+    left: 20px
+    top: -20px
+    transform: rotate(-90deg)
+    width: 78%
+
+
+@media (max-width: 500px)
+  .card
+    width: 220px
+  .text2
+    padding-bottom: 20px
+  .decor
+    width: 87%

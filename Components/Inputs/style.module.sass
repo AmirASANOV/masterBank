@@ -1,0 +1,61 @@
+@use '../../ProjectStyles/variable'
+@use "../../ProjectStyles/mixin"
+
+.input-container
+  position: relative
+  width: 100%
+
+.inputAnimation
+  animation: inputAnimation ease-out .5s
+  -webkit-animation: inputAnimation ease-out .5s
+  -moz-animation: inputAnimation ease-out .5s
+  -o-animation: inputAnimation ease-out .5s
+
+.label
+  display: block
+  width: 100%
+  font-size: 16px
+  color: #717171
+
+.textarea
+  width: 100%
+  height: 100%
+  background: #FFFFFF
+  border: 1px solid #F29727
+  box-sizing: border-box
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  border-radius: 5px
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  resize: none
+  margin-bottom: 8px
+  padding: 8px
+  font-family: variable.$main-font
+  font-style: normal
+  font-weight: normal
+  font-size: 13px
+  color: #6C6C6C
+
+.input
+  @include mixin.inputMain
+
+@keyframes bluring
+  0%
+    background-position: 200% 0%
+  100%
+    background-position: 0% 0%
+
+@keyframes inputAnimation
+  from
+    opacity: 0
+    transform: scale(0.9)
+    -webkit-transform: scale(0.9)
+    -moz-transform: scale(0.9)
+    -o-transform: scale(0.9)
+  to
+    opacity: 1
+    transform: scale(1)
+    -webkit-transform: scale(1)
+    -moz-transform: scale(1)
+    -o-transform: scale(1)

@@ -1,0 +1,48 @@
+@import '@/ProjectStyles/variable'
+
+.headerContainer
+  background-color: #EBE9EE
+
+.nav
+  display: flex
+
+.navItem
+  font-family: 'Geologica'
+  font-weight: 400
+  font-size: 16px
+  padding: 10px
+  white-space: nowrap
+  border: none
+  background: none
+  cursor: pointer
+  border-radius: 6px
+  transition: .1s
+
+  &:hover
+    background: #d70f2610
+
+.buttonCabinet
+  color: #1C1C1E
+  font-family: $font-main
+  display: flex
+  align-items: center
+  gap: 4px
+  font-weight: 500
+  white-space: nowrap
+  font-size: 16px
+  border: none
+  background: none
+  cursor: pointer
+  transition: .2s
+
+  &:hover
+    opacity: 0.8
+
+@media (max-width: 1200px)
+  .navItem
+    display: none
+
+@media (max-width: 500px)
+  .buttonCabinet
+    p
+      display: none

@@ -1,0 +1,97 @@
+.slider
+  display: flex
+  justify-content: center
+  align-items: center
+
+  &__container
+    overflow: hidden
+    max-width: 1060px
+
+  &__wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 160px
+    transition: .5s
+    @media (max-width: 1040px)
+      min-height: 130px
+
+  &__item-container
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    p
+      font-family: Tahoma, sans-serif
+      font-size: 18px
+      line-height: 22px
+      color: #8D8D8D
+      word-wrap: break-word
+      white-space: pre-line
+      min-height: 40px
+      text-align: center
+      margin: 0
+      @media (max-width: 1040px)
+        font-size: 16px
+        line-height: 19px
+      @media (max-width: 768px)
+        font-size: 13px
+        line-height: 16px
+
+  &__icon
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-bottom: 10px
+
+    filter: drop-shadow(0 2px 5px rgba(38, 53, 104, 0.25))
+
+    img
+      object-fit: contain
+      @media (max-width: 1040px)
+        width: 80px
+        height: 80px
+      @media (max-width: 768px)
+        width: 75px
+        height: 75px
+      @media (max-width: 500px)
+        width: 55px
+        height: 55px
+
+    @media (max-width: 1040px)
+      width: 120px
+      height: 120px
+    @media (max-width: 500px)
+      width: 72px
+      height: 72px
+
+  &__btn
+    border: none
+    background-color: inherit
+    padding: 0
+    cursor: pointer
+    position: relative
+    bottom: 20px
+
+  &__dots
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+  &__dot
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background-color: #6C6C6C
+    margin-right: 5px
+    margin-left: 5px
+    cursor: pointer
+
+  &__dot-active
+    width: 11px
+    height: 11px
+    background-color: #000

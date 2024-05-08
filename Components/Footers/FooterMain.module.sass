@@ -1,0 +1,81 @@
+@import '@/ProjectStyles/variable'
+
+.phoneNumber
+  font-family: "Geologica"
+  font-size: 20px
+  padding-bottom: 20px
+  @media screen and (max-width: 767.8px)
+    font-size: 14px
+
+.text
+  font: $t-p5
+  color: #6C6C6C
+  padding-bottom: 20px
+  // max-width: 900px
+  @media screen and (max-width: 767.8px)
+    font-size: 14px
+
+.linkDescription
+  display: flex
+  flex-direction: column
+  margin-bottom: 28px
+  cursor: pointer
+  width: fit-content
+
+  @media screen and (max-width: 767.8px)
+    font-size: 15px
+
+  .linkTitle
+    display: flex
+    margin-bottom: 12px
+
+    .link
+      font: $t-h3
+      color: #444444
+    &:hover
+      opacity: 0.8
+
+    .arrow
+      margin-left: 8px
+
+  .linkWrapper
+    transition: all 0.5s ease
+    display: flex
+    flex-direction: column
+    gap: 8px
+    overflow: hidden
+
+
+    .link 
+      color: #6C6C6C
+
+
+
+.btnLink
+  padding: 0
+  font: $t-p5
+  color: #7cc3d8
+  max-width: 900px
+  border: none
+  background-color: transparent
+  text-decoration: underline
+  cursor: pointer
+  text-align: left
+
+@media (max-width: 1000px)
+  .text
+    &:last-child
+      margin-bottom: 60px
+  
+.hidden 
+    display: none
+    
+
+.title
+  font-family: "Geologica"
+  padding-bottom: 20px
+  font-size: 20px
+  @media screen and (max-width: 767.8px)
+    font-size: 14px
+    color: #6C6C6C
+  

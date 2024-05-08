@@ -1,0 +1,136 @@
+@use '@/ProjectStyles/variable'
+
+.banner
+  margin-bottom: 40px
+  overflow: hidden
+  font-family: variable.$font-main
+  padding-top: 30px
+  @media (max-width: variable.$tablet-resolution)
+    margin-bottom: 25px
+  @media (max-width: variable.$mobile-width - 1px)
+    padding-top: 25px
+    padding-left: 0
+    padding-right: 0
+
+  &__title
+    margin: 0
+    max-width: 550px
+    font-weight: bold
+    font-size: 30px
+    line-height: 30px
+    padding-top: 20px
+    @media (max-width: variable.$tablet-resolution)
+      font-size: 24px
+      line-height: 24px
+      padding-top: 10px
+    @media (max-width: variable.$mobile-width - 1px)
+      font-size: 20px
+      line-height: 20px
+      margin: 0 auto
+      text-align: center
+      padding-top: 0
+
+  &__description
+    margin: 0
+    font-weight: normal
+    font-size: 22px
+    line-height: 22px
+    padding-top: 40px
+    padding-bottom: 55px
+    @media (max-width: variable.$tablet-resolution)
+      font-size: 16px
+      line-height: 16px
+      padding-top: 25px
+      padding-bottom: 30px
+    @media (max-width: variable.$mobile-width - 1px)
+      font-size: 15px
+      line-height: 15px
+      padding-top: 16px
+      padding-bottom: 20px
+      text-align: center
+
+  &__column
+    padding-left: 20px
+    padding-right: 20px
+
+  &__list
+    margin: 0
+    font-weight: normal
+    font-size: 22px
+    line-height: 22px
+    padding-top: 40px
+    padding-bottom: 30px
+    @media (max-width: variable.$tablet-resolution)
+      font-size: 16px
+      line-height: 16px
+      padding-top: 24px
+
+    li
+      padding-top: 15px
+      padding-bottom: 15px
+      padding-left: 20px
+      position: relative
+      @media (max-width: variable.$tablet-resolution)
+        padding-top: 10px
+        padding-bottom: 10px
+
+      &:before
+        content: ''
+        position: absolute
+        top: 50%
+        left: 0
+        transform: translateY(-50%)
+        border-radius: 50%
+        width: 7px
+        height: 7px
+        background-color: variable.$main-black
+
+
+  &__image
+    position: relative
+    @media (max-width: variable.$tablet-resolution)
+      width: 286px
+      height: 279px
+    @media (max-width: variable.$mobile-width - 1px)
+      width: 100%
+      height: 100%
+      max-height: 300px
+
+    &_bgc
+      position: absolute
+      top: 0
+      left: 0
+      width: 70%
+      height: 60%
+      z-index: 1
+      background: variable.$tinkoff_color
+      filter: blur(60px)
+
+    img
+      display: inline-block
+      position: relative
+      z-index: 2
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  &__btn
+    max-width: 275px
+
+    a
+      color: variable.$main-black-support
+      padding: 18px 0
+      font-size: 18px
+      line-height: 18px
+
+    @media (max-width: variable.$tablet-resolution)
+      max-width: 230px
+
+    @media (max-width: variable.$mobile-width - 1px)
+      position: absolute
+      bottom: 20px
+      left: 50%
+      z-index: 3
+      width: 100%
+      max-width: 230px
+      transform: translateX(-50%)

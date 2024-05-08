@@ -1,0 +1,67 @@
+@use '@/ProjectStyles/variable'
+
+.suggestion__item
+  font-size: 15px
+  color: variable.$text-color
+  font-family: variable.$main-font
+
+  &:not(:last-child)
+    margin-bottom: 10px
+
+.table_list
+  display: table
+  width: 100%
+
+.table_line
+  display: table-row
+
+.table_border
+  width: 100%
+  padding: 10px
+
+  &:not(first-child)
+    border-top: 1px solid variable.$light-text-color
+
+.table_cell
+  display: table-cell
+  width: 25%
+  padding: 15px 10px
+  text-align: center
+  vertical-align: middle
+  color: variable.$light-text-color
+  position: relative
+  font-family: variable.$main-font
+
+.table_cell_item
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  -webkit-justify-content: center
+  align-items: center
+  -webkit-align-items: center
+  width: 100%
+  height: 100%
+  font-size: 16px
+
+.table_text
+  display: block
+  font-size: 18px
+  line-height: 22px
+  color: variable.$text-color
+  text-align: center
+
+@media screen and (max-width: variable.$tablet-width)
+  .table_cell_item
+    font-size: 14px
+  .table_cell
+    padding: 13px 3px
+
+@media screen and (max-width: variable.$mobile-width - 1px) and (min-width: 300px)
+  .table_cell_item, .table_text
+    line-height: 13px
+    font-size: 11px
+  .table_cell_item
+    padding: 0
+  .table_cell:nth-child(1)
+    max-width: 70px

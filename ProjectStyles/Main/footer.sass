@@ -1,0 +1,21 @@
+@import '../variable'
+@import '../mixin'
+
+.footer
+  margin-bottom: 20px
+
+.footer__container-links
+  @include container-flex-center
+  justify-content: flex-start
+  flex-wrap: wrap
+
+.footer__container-links-item
+  width: 100%
+  margin-bottom: 8px
+
+.footer_description-text
+  font-size: 12px
+  line-height: 14px
+  color: $main-gray-support
+  margin-bottom: 8px !important
+  white-space: pre-line

@@ -1,0 +1,214 @@
+@use '@/ProjectStyles/variable'
+@use "@/ProjectStyles/mixin"
+
+.header
+  position: static
+  box-shadow: 0 0 5px rgba(38, 53, 104, 0.2)
+  -webkit-box-shadow: 0 0 5px rgba(38, 53, 104, 0.2)
+  -moz-box-shadow: 0 0 5px rgba(38, 53, 104, 0.2)
+  -o-box-shadow: 0 0 5px rgba(38, 53, 104, 0.2)
+  background-color: variable.$main-white
+  width: 100%
+  display: flex
+  z-index: 1100
+  box-sizing: border-box
+  flex-shrink: 0
+  flex-direction: column
+  font-family: variable.$font-main
+
+  &__bottom
+    min-height: 66px
+    display: flex
+    align-items: center
+
+  &__contact
+    position: relative
+    h3
+      margin: 0
+      font-size: 16px
+      padding-bottom: 5px
+
+    p
+      margin: 0
+
+    p:last-child
+      position: absolute
+      white-space: nowrap
+      cursor: pointer
+      top: 40px
+
+  &__toolbar
+    min-height: 90px
+
+    display: flex
+    position: relative
+    align-items: center
+    justify-content: space-between
+
+    padding: 0 16px
+
+  &__logo
+    border: none
+    outline: none
+    height: 100%
+    max-height: 100%
+    width: 100%
+    max-width: 130px
+    display: flex
+    justify-content: flex-start
+
+    background-color: transparent
+
+    z-index: 2
+
+    img
+      width: auto
+      height: 100%
+      max-width: 126px
+
+    :hover
+      cursor: pointer
+      opacity: 0.9
+
+  &__unsubscribe
+    white-space: pre-wrap
+
+  &__masterbank
+    &__unsubscribe
+      display: none
+// =====================================================================================================================
+
+.leftSide
+  &__masterbank
+    align-items: stretch !important
+    justify-content: flex-end !important
+    gap: 40px
+
+.header__nav
+  width: 100%
+
+.btnEntry
+  &__masterbank
+    @media (min-width: variable.$tablet-resolution)
+      background: transparent
+      border: 1px solid variable.$main-masterbank
+      color: variable.$main-masterbank
+      font-weight: 550 !important
+
+      &:hover
+        box-shadow: none
+
+    @media screen and (max-width: variable.$tablet-width)
+      background-color: #fff
+      color: #0E1239
+      box-shadow: 0 2px 4px 0 #AEA291
+
+    @media screen and (max-width: variable.$mobile-width)
+      white-space: nowrap
+      line-height: 15px
+
+.new_sobank
+  position: fixed
+  top: 0
+  box-shadow: none
+  &__contact
+    display: flex
+    flex-direction: row-reverse
+    white-space: nowrap
+    gap: 25px
+    align-items: center
+    padding-top: 20px
+  &__bottom
+    min-height: 48px
+
+    @media screen and (max-width: 767.8px)
+      padding: 0 16px
+    @media screen and (min-width: 768px)
+      padding: 0 150px
+
+  &__toolbar
+    min-height: 52px
+
+    @media screen and (max-width: 767.8px)
+      padding: 0 16px
+    @media screen and (min-width: 768px)
+      padding: 0 150px
+
+  &__text
+    font-family: Inter
+    font-size: 16px
+    line-height: 19px
+    font-weight: 500
+    color: #868383
+
+  &__image
+    width: 20px
+    height: 20px
+
+    background-color: transparent
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center center
+
+  &__nav
+    gap: 50px
+.image
+  display: flex
+  flex-direction: row
+  gap: 8px
+
+.header
+  &__masterbank
+    &__nav_container
+      padding-right: 30%
+
+      position: relative
+
+      justify-content: space-between !important
+
+      box-sizing: border-box
+
+      >li:nth-child(4)
+        position: absolute
+        right: 0
+
+.header__nav_container
+  display: flex
+  justify-content: space-around
+  align-items: center
+  width: 100%
+
+  & li.active__onbank:before
+    @include mixin.underline(variable.$main-orange)
+
+  & li.active__sovbank:before
+    @include mixin.underline(variable.$main-sovbank)
+
+  & li.active__pro:before
+    @include mixin.underline(variable.$main-sovbank)
+
+  & li.active__sop:before
+    @include mixin.underline(variable.$main-sovbank)
+
+  & li.active__first_credit:before
+    @include mixin.underline(variable.$main-first_credit)
+
+[id = li-new_sobank-header-0]
+  background-image: url("../../../Assets/header/c-card.png")
+[id = li-new_sobank-header-1]
+  background-image: url("../../../Assets/header/c-cash.svg")
+[id = li-new_sobank-header-2]
+  background-image: url("../../../Assets/header/card.svg")
+[id = li-new_sobank-header-3]
+  background-image: url("../../../Assets/header/unsubscribe.svg")
+[id = li-new_sobank-header-4]
+  background-image: url("../../../Assets/header/home.svg")
+
+@media screen and (max-width: variable.$desktop-width)
+  .header_container
+    width: variable.$page-width-full !important
+
+@media screen and (max-width: variable.$tablet-width)
+  .header
+    &__logo
+      max-width: 164px

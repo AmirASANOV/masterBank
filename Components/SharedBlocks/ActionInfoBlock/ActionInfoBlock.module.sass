@@ -1,0 +1,43 @@
+@import '@/ProjectStyles/variable'
+
+.container
+  padding: 48px 0
+  display: grid
+  grid-template-columns: 1fr max-content
+  align-content: center
+  align-items: center
+  gap: 28px
+
+.image
+  width: 100%
+  max-width: 400px
+
+.title
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 28px
+  font-weight: 500
+  margin: 0
+  padding-bottom: 12px
+
+.text
+  font-family: $font-main
+  color: #1c1c1e
+  font-size: 18px
+  font-weight: 400
+  margin: 0
+  padding-bottom: 40px
+
+@media (max-width: 900px)
+  .container
+    display: flex
+    flex-direction: column-reverse
+    align-items: center
+    gap: 28px
+  // .text
+  //   text-align: center
+  // .title
+  //   text-align: center
+  .btn
+    display: block
+    margin: 0 auto

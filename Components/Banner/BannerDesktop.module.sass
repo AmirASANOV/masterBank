@@ -1,0 +1,112 @@
+@import '@/ProjectStyles/variable'
+
+.bannerContainer
+  background-color: #EBE9EE
+  padding-top: 32px
+  padding-bottom: 20px
+
+.bannerContent
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+.bannerContentTitle
+  font-family: $font-main
+  font-size: 36px
+  font-weight: 600
+  margin: 0
+  padding: 0
+  padding-bottom: 36px
+  text-align: center
+
+.bannerContentButton
+  width: 278px
+  min-width: auto
+
+.bannerContentPhoto
+  margin-top: 36px
+
+.bannerBackground
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+
+.bannerCards
+  width: 100%
+  justify-content: center
+  gap: 20px
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+
+.bannerCardsMoreFive
+  width: 100%
+  justify-content: center
+  gap: 20px
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  .bannerCard
+    grid-column: span 3
+    &:nth-child(-n + 3)
+      grid-column: span 2
+
+.bannerCardsMorefour
+  width: 100%
+  justify-content: center
+  gap: 20px
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  .bannerCard
+    &:nth-child(1), &:nth-child(4)
+      grid-column: span 2
+
+.bannerCard
+  // max-width: 370px
+  width: 100%
+  padding: 32px
+  border-radius: 24px
+  background-color: #FFFFFF
+  color: #626262
+  cursor: pointer
+
+  &.active
+    background-color: #A3B1BE
+    color: #fff
+
+    & svg *
+      stroke: #fff
+
+.bannerCardTitle
+  font-family: $font-main
+  font-weight: 700
+  font-size: 28px
+  padding-bottom: 8px
+  padding-top: 16px
+  margin: 0
+  @media screen and (max-width: 767.8px)
+    font-size: 24px
+    
+  
+
+.bannerCardText
+  font-family: $font-main
+  font-size: 21px
+  font-weight: 500
+  margin: 0
+  @media screen and (max-width: 767.8px)
+    font-size: 18px
+  
+
+@media (max-width: 767px)
+  .bannerCards
+    justify-items: center
+    grid-template-columns: 1fr
+  .bannerCard
+    max-width: 370px
+
+@media (max-width: 800px)
+  .bannerContentTitle
+    font-size: 28px
+  .bannerBackground
+    max-width: 100%
+    height: auto

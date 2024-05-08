@@ -1,0 +1,62 @@
+.wannaKnowWrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  &__block
+    display: flex
+    flex-direction: column
+    align-items: center
+    @media screen and (min-width: 768px)
+      gap: 24px
+      padding: 40px 0
+    @media screen and (max-width: 767.8px)
+      gap: 10px
+      padding: 32px 20px
+.title
+  font-family: Inter
+  color: #5e6165
+  font-size: 28px
+  font-weight: 500
+  line-height: 100%
+.button
+  &__desktop
+    font-family: Inter
+    display: flex
+    padding: 12px 0
+    width: 17vw
+    align-items: center
+    justify-content: center
+    border: none
+    background-color: #319c4a
+    color: #FFFFFF
+    font-size: 21px
+    font-weight: 500
+    line-height: 25px
+    border-radius: 8px
+    cursor: pointer
+  &__mobile
+    background-color: transparent
+    border: none
+    color: #319c4a
+    font-family: Inter
+    font-size: 14px
+    font-weight: 400
+    line-height: 120%
+    text-decoration: underline
+    text-underline-offset: 3px
+    padding: 0
+    cursor: pointer
+
+.backgroundImage
+  background-color: transparent
+  background-size: contain
+  background-repeat: no-repeat
+  background-position: center center
+  @media screen and (min-width: 768px)
+    width: 36vw
+    height: 20vw
+    background-image: url("../../../../Assets/banner/newSobank/getCard_desktop.svg")
+  @media screen and (max-width: 767.8px)
+    width: 87.5vw
+    height: 50vw
+    background-image: url("../../../../Assets/banner/newSobank/getCard_mobile.svg")

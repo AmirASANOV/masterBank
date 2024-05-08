@@ -1,0 +1,267 @@
+@import 'variable'
+
+@mixin tablet-width
+  @media (min-width: $mobile-width + 1px) and (max-width: $tablet-resolution)
+    @content
+
+@mixin mobile-width
+  @media screen and (max-width: $mobile-width)
+    @content
+
+@mixin desktop-width
+  @media screen and (min-width: $tablet-resolution + 1px)
+    @content
+
+@mixin container
+  position: relative
+  width: 100%
+  margin-left: auto
+  margin-right: auto
+  padding: 0
+  box-sizing: border-box
+
+@mixin container-flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  white-space: nowrap
+
+@mixin information__button
+  font-family: $font-main
+  font-style: normal
+  font-weight: 550
+  border-radius: 15px
+  font-size: 12px
+  line-height: 12px
+  height: 25px
+  cursor: pointer
+  width: 100%
+  white-space: nowrap
+  padding: 0 15px
+  @media (max-width: $tablet-resolution)
+    margin-right: 25px
+    &:last-child
+      margin-right: 0
+  @media (max-width: $mobile-width)
+    margin-right: 8px
+    &:last-child
+      margin-right: 0
+
+@mixin information_tariffs
+  font-style: normal
+  font-weight: normal
+  font-size: 14px
+  line-height: 14px
+  padding: 0
+  margin: 0
+  text-align: left
+
+@mixin underline($color)
+  &.active
+    font-weight: 550
+  &.active:before, &:before
+    content: ''
+    position: absolute
+    bottom: -5px
+    left: 0
+    height: 2px
+    background: $color
+    border-radius: 10px
+    transition: all .5s
+  &:before
+    width: 0
+  &.active:before
+    width: 100%
+
+@mixin banner__slider-item($background__color)
+  background: $background__color !important
+  height: 4px
+  bottom: 0
+  position: absolute
+  width: 100%
+  border-bottom-right-radius: 2px
+  border-top-right-radius: 2px
+  margin-left: -24px
+  animation-duration: 10s
+  animation: bandBorderAnimation 10s forwards ease-in-out
+
+@mixin textNotUnderlined($color)
+  position: relative
+  font-family: $font-main
+  font-style: normal
+  font-weight: normal
+  font-size: 17px
+  color: $color
+  white-space: nowrap
+  cursor: pointer
+  @media (max-width: $mobile)
+    font-size: 15px
+
+@mixin inputConfig
+  &:not(.input[type="number"])
+    padding: 40px 50px 20px 10px
+
+  &[type='number']
+    padding: 10px
+
+  &::placeholder
+    font-size: 16px
+
+@mixin selectInputFocusable($color)
+  &:focus
+    border-left: 2px solid $color !important
+    border-right: 2px solid $color !important
+    border-top: 2px solid $color !important
+    border-radius: 8px 8px 0 0
+    border-bottom: 2px solid $color
+    box-shadow: 0 0 0
+    background-color: white !important
+
+@mixin inputMain
+  &, &__onbank, &__sovbank, &__sop, &__kk_sobank, &__first_credit, &__cc_sobank, &__new_sobank, &__pro, &__masterbank
+    @include inputProps
+    @include inputConfig
+
+    &:focus
+      border: 2px solid $description-color !important
+      background-color: white !important
+
+    &.input__code
+      letter-spacing: 7px
+
+  &, &__onbank, &__select, &__select__onbank
+    @include inputDoneProps($selected-green-preselect)
+    @include inputErrorProps($danger-color)
+  &__select__masterbank,
+  &__masterbank
+    @include inputDoneProps($main-masterbank__input-done)
+    @include inputErrorProps($danger-color)
+
+  &__select__sovbank,
+  &__sovbank,
+  &__select__cc_sobank,
+  &__cc_sobank,
+  &__select__new_sobank,
+  &__new_sobank,
+  &__select__pro,
+  &__pro
+    @include inputDoneProps($main-sovbank__input-done)
+    @include inputErrorProps($danger-color)
+
+  &__select__sop, &__sop
+    @include inputDoneProps($main-sovbank__input-done)
+    @include inputErrorProps($danger-color)
+
+  &__select__kk_sobank, &__kk_sobank
+    @include inputDoneProps($main-kk_sobank__input-done)
+    @include inputErrorProps($danger-color)
+
+  &__select__first_credit, &__first_credit
+    @include inputDoneProps($main-first_credit__input-done)
+    @include inputErrorProps($danger-color)
+
+  &__select,
+  &__select__onbank,
+  &__select__sovbank,
+  &__select__sop,
+  &__select__kk_sobank,
+  &__select__first_credit,
+  &__select__cc_sobank,
+  &__select__new_sobank,
+  &__select__pro,
+  &__select__masterbank
+    @include inputProps
+    @include selectInputFocusable($description-color)
+    @include inputConfig
+
+@mixin inputProps
+  position: relative
+  width: 100% !important
+  outline: none
+  cursor: pointer
+  border-radius: 8px
+  font-family: $main-font
+  box-shadow: $input-shadow
+  border: 0
+  height: 50px
+  color: $text-color
+  font-size: 16px
+  overflow: hidden
+  overflow-y: scroll
+  perspective: 200px
+  padding-left: 8px
+  transition: background-color .3s
+  box-sizing: border-box
+
+  @media screen and (max-width: $mobile-width - 1px)
+    &::placeholder
+      font-size: 15px
+
+  @media screen and (max-width: $tablet-width - 1px)
+    &::placeholder
+      font-size: 15px
+
+@mixin inputDoneProps($background-color)
+  &.input-done
+    animation: bluring 1.6s ease-out forwards
+    background: $background-color
+    color: $dark-text-color
+    background-size: 200% 200%
+
+@mixin inputErrorProps($background-color)
+  &.input-error
+    border: 1px solid $background-color
+
+    &::placeholder
+      color: $gray-color
+
+@mixin selectedItemProps
+  position: relative
+  width: 100%
+  padding: 10px 20px
+  background-color: white
+  display: flex
+  overflow: hidden
+  font-size: 16px
+  font-family: $main-font
+  align-items: center
+  justify-content: space-between
+  flex-wrap: nowrap
+  text-align: left
+  cursor: pointer
+  color: $text-color
+
+@mixin selectedItemAdditionalProps($suggestion_color, $hover_color, $select_color)
+  &__suggestion
+    @include selectedItemProps
+    background: $suggestion_color
+    color: $description-color
+    font-size: 11px !important
+
+    &:hover
+      cursor: default
+
+  &__preselect
+    background: $select_color
+    color: $description-color
+    font-family: $main-font
+
+  &:not(:first-child)
+    border-top: 1px solid $light-text-color
+
+  & h5
+    margin: 5px 0
+
+  &:hover
+    background: $hover_color
+
+  &:hover .link-color
+    color: #FFF
+
+  &.includes
+    background: $select_color
+    color: $text-color
+
+@mixin selectedItemMain
+  @include selectedItemProps

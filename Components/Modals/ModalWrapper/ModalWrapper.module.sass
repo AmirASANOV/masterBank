@@ -1,0 +1,49 @@
+@use '@/ProjectStyles/variable'
+
+.modal
+  height: 100vh
+  width: 100vw
+  background-color: rgba(0, 0, 0, 0.35)
+  backdrop-filter: blur(5px)
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 100
+  display: flex
+  justify-content: center
+  align-items: center
+  opacity: 0
+  pointer-events: none
+  font-family: variable.$font-main
+
+  &__active
+    opacity: 1
+    pointer-events: all
+
+
+  &__content
+    position: relative
+    padding: 30px 100px 25px
+    background-color: white
+    min-width: 30vw
+    transform: scale(0.5)
+    transition: .3s
+    border-radius: 25px
+    color: #1C1C1E
+    @media (max-width: variable.$tablet-resolution)
+      padding: 30px 50px 25px
+    @media (max-width: variable.$mobile-width - 1px)
+      border-radius: 10px
+      padding: 30px 15px 25px
+      max-width: 90vw
+
+    &_active
+      transform: scale(1)
+
+.close
+  position: absolute
+  right: 20px
+  top: 20px
+  @media (max-width: variable.$mobile-width - 1px)
+    right: 0
+    top: -20px

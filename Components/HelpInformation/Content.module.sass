@@ -1,0 +1,86 @@
+@import '@/ProjectStyles/variable'
+
+.wrapper
+  display: flex
+  justify-content: center
+  gap: 16px
+
+.block
+  width: 100%
+  max-width: 372px
+
+.blockSingle
+  max-width: 450px
+  .contentWrapper
+    display: grid
+    grid-template-columns: repeat(2, auto)
+  .blockTitle
+    text-align: center
+
+.blockTitle
+  font: $t-h4
+  padding-bottom: 12px
+  @media screen and (max-width: 767.8px)
+    font-size: 16px
+  
+
+.blockTitleMini
+  color: #747474
+  font: $t-p5
+  padding-bottom: 4px
+
+.blockText
+  font: $t-p5
+  font-size: 16px
+  padding-bottom: 8px
+  color: #1C1C1E
+  @media screen and (max-width: 767.8px)
+    font-size: 12px
+  
+
+.links
+  display: flex
+  justify-content: center
+  gap: 27px
+  margin-top: 24px
+
+.link
+  display: flex
+  align-items: center
+  gap: 12px
+  max-width: 280px
+
+.unorderedList
+  font: $t-p5
+  font-size: 18px
+  padding: 0 0 8px 20px
+
+.listItem
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    top: 7px
+    left: -15px
+    width: 6px
+    height: 6px
+    border-radius: 50%
+    background: #1c1c1e
+
+@media (max-width: 600px)
+  .wrapper
+    flex-direction: column
+  .block
+    max-width: 100%
+      
+  .blockTitle
+    font-size: 16px
+  .blockTitleMini
+    font-size: 12px
+  .blockText
+    font-size: 14px
+  .links
+    flex-direction: column
+  .unorderedList
+    font-size: 14px
+      
