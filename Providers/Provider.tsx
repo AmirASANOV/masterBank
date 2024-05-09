@@ -1,12 +1,13 @@
-import React from 'react';
+"use client";
+import React from "react";
 
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import { store } from '../ReduxStore';
+import { store } from "../ReduxStore";
 
-import { PhoneModalProvider } from './Context/PhoneModalProvider';
-import { UtmContextProvider } from './Context/UtmContextProvider';
+import { PhoneModalProvider } from "./Context/PhoneModalProvider";
+import { UtmContextProvider } from "./Context/UtmContextProvider";
 
 interface ProviderWrapper {
   state: typeof store;

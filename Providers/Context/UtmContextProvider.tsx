@@ -1,6 +1,8 @@
-import React, { createContext } from 'react';
+"use client";
 
-import { useUTM, UtmParams } from '@/CustomHooks/useUTM';
+import React, { createContext } from "react";
+
+import { useUTM, UtmParams } from "@/CustomHooks/useUTM";
 
 export const UtmContext = createContext<UtmParams>({
   limit: null,
@@ -11,7 +13,9 @@ interface UtmContextProvider {
   children: React.ReactNode;
 }
 
-export const UtmContextProvider: React.FC<UtmContextProvider> = ({ children }) => {
+export const UtmContextProvider: React.FC<UtmContextProvider> = ({
+  children,
+}) => {
   const data = useUTM();
   return <UtmContext.Provider value={data}>{children}</UtmContext.Provider>;
 };

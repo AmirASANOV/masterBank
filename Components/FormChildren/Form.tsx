@@ -1,26 +1,28 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import styles from './Form.module.sass';
+import styles from "./Form.module.sass";
 
-import { useAppSelector } from '@/CustomHooks/useAppSelector';
+import { useAppSelector } from "@/CustomHooks/useAppSelector";
 
-import { App } from '@/ProjectTypes/AppTypes';
-import CreditParameters from '@/app/ApplicationForm/FormStages/CreditParameters';
-import { HypothecForm } from '@/app/ApplicationForm/HypothecForm/HypothecForm';
+import { App } from "@/ProjectTypes/AppTypes";
+import CreditParameters from "@/app/ApplicationForm/FormStages/CreditParameters";
+import { HypothecForm } from "@/app/ApplicationForm/HypothecForm/HypothecForm";
 
 type FormProps = {
   hypothecPlace?: boolean;
 };
 
 const FirstStageForm: FC<FormProps> = ({ hypothecPlace }) => {
-  const credit = useAppSelector(state => state.validator.credit_parameters_info);
+  const credit = useAppSelector(
+    (state) => state.validator.credit_parameters_info
+  );
   const getTitle = (v: App.CreditProduct | null | undefined) => {
-    if (!v) return 'карту';
-    if (v === 'credit_cash') return 'кредит';
-    if (v === 'mfo') return 'кредит';
-    if (v === 'hypothec') return 'ипотеку';
-    if (v === 'car_credit') return 'автокредит';
-    return 'карту';
+    if (!v) return "карту";
+    if (v === "credit_cash") return "кредит";
+    if (v === "mfo") return "кредит";
+    if (v === "hypothec") return "ипотеку";
+    if (v === "car_credit") return "автокредит";
+    return "карту";
   };
 
   return (
@@ -28,7 +30,9 @@ const FirstStageForm: FC<FormProps> = ({ hypothecPlace }) => {
       <h3 className={styles.title}>
         Как получить {getTitle(credit.credit_target.result?.value?.value)}?
       </h3>
-      <p className={styles.description}>Заполните заявку и узнайте условия за 2 минуты</p>
+      <p className={styles.description}>
+        Заполните заявку и узнайте условия за 2 минуты
+      </p>
 
       {!hypothecPlace ? (
         <CreditParameters

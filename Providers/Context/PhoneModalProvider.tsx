@@ -1,4 +1,5 @@
-import React, { createContext, FC, useMemo, useState } from 'react';
+"use client";
+import React, { createContext, FC, useMemo, useState } from "react";
 
 interface IModalContext {
   openModal: boolean;
@@ -15,6 +16,8 @@ export const PhoneModalProvider: FC<PhoneModalProvider> = ({ children }) => {
   const result = useMemo(() => ({ openModal, setOpenModal }), [openModal]);
 
   return (
-    <PhoneModalContext.Provider value={result}>{children}</PhoneModalContext.Provider>
+    <PhoneModalContext.Provider value={result}>
+      {children}
+    </PhoneModalContext.Provider>
   );
 };
