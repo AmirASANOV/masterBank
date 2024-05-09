@@ -1,33 +1,37 @@
-import React, { lazy, useEffect } from 'react';
+"use client";
+import React, { lazy, useEffect } from "react";
 
-import Cookies from 'js-cookie';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router';
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 
-import { NotificationItemTypes } from '@/Components/Notifications/notificationTypes';
-import Preloader from '@/Components/Preloader/Preloader';
-import { WithSuspense } from '@/Components/Suspense/WithSuspense';
-import { useAppSelector } from '@/CustomHooks/useAppSelector';
-import { currentDomain } from '@/GlobalConfig';
-import { consent } from '@/ReduxStore/reducer/userReducer/userReducer';
+import { NotificationItemTypes } from "@/Components/Notifications/notificationTypes";
+import Preloader from "@/Components/Preloader/Preloader";
+import { WithSuspense } from "@/Components/Suspense/WithSuspense";
+import { useAppSelector } from "@/CustomHooks/useAppSelector";
+import { currentDomain } from "@/GlobalConfig";
+import { consent } from "@/ReduxStore/reducer/userReducer/userReducer";
 
 const LazyRenderNotification = lazy(() =>
-  import('@/Components/Notifications/Notification').then(({ RenderNotification }) => ({
-    default: RenderNotification,
-  })),
+  import("@/Components/Notifications/Notification").then(
+    ({ RenderNotification }) => ({
+      default: RenderNotification,
+    })
+  )
 );
-const AuthModal = lazy(() => import('@/Components/Modals/AuthModal/AuthModal'));
+const AuthModal = lazy(() => import("@/Components/Modals/AuthModal/AuthModal"));
 
-const MobileMenu = lazy(() => import('@/Components/MobileMenu/MobileMenu'));
+const MobileMenu = lazy(() => import("@/Components/MobileMenu/MobileMenu"));
 const NewSobankMobileMenu = lazy(
-  () => import('@/Components/MobileMenu/NewSobankMobileMenu/NewSobankMobileMenu'),
+  () =>
+    import("@/Components/MobileMenu/NewSobankMobileMenu/NewSobankMobileMenu")
 );
 
 interface ConfigProvider {
   children: React.ReactNode;
 }
 
-const ConfigProvider: React.FC<ConfigProvider> = props => {
+const ConfigProvider: React.FC<ConfigProvider> = (props) => {
   const dispatch = useDispatch();
   const {
     notifications,
@@ -39,7 +43,7 @@ const ConfigProvider: React.FC<ConfigProvider> = props => {
     viewport,
     isAuth,
     zaimerLink,
-  } = useAppSelector(state => ({
+  } = useAppSelector((state) => ({
     notifications: state.config.notification.notification_list,
     cookie: state.config.cookieAccept,
     modal: state.config.modalWindow,
@@ -51,13 +55,13 @@ const ConfigProvider: React.FC<ConfigProvider> = props => {
     zaimerLink: state.config.zaimer.link,
   }));
 
-  const cookiesName = 'Consent';
+  const cookiesName = "Consent";
   const location = useLocation().pathname;
 
   useEffect(() => {
     if (!cookie) {
       setTimeout(() => {
-        Cookies.set(cookiesName, 'true');
+        Cookies.set(cookiesName, "true");
         dispatch(consent());
       }, 3000);
     }
@@ -72,46 +76,54 @@ const ConfigProvider: React.FC<ConfigProvider> = props => {
           notifications.map((item: NotificationItemTypes) => (
             <WithSuspense
               key={`render_notification_func_${item.id}`}
-              fallBack={<Preloader message="Загрузка уведомлений" type="future" />}
+              fallBack={
+                <Preloader message="Загрузка уведомлений" type="future" />
+              }
             >
               <LazyRenderNotification data={item} />
             </WithSuspense>
           ))}
         {loaderStatus && (
-          <Preloader message={message || 'Загрузка данных...'} type={type} />
+          <Preloader message={message || "Загрузка данных..."} type={type} />
         )}
       </div>
       {modal.view && !isAuth ? (
         <WithSuspense
-          fallBack={<Preloader message="Загрузка окна авторизации" type="future" />}
+          fallBack={
+            <Preloader message="Загрузка окна авторизации" type="future" />
+          }
         >
           <AuthModal />
         </WithSuspense>
       ) : (
-        ''
+        ""
       )}
-      {viewport !== 'desktop' &&
+      {viewport !== "desktop" &&
         !modal.view &&
         !zaimerLink &&
-        !(currentDomain === 'new_sobank') &&
+        !(currentDomain === "new_sobank") &&
         !(
-          (currentDomain === 'cc_sobank' || currentDomain === 'sovbank') &&
-          (location.includes('user/credit/credit_card') ||
-            location.includes('user/change_anketa/credit_card'))
+          (currentDomain === "cc_sobank" || currentDomain === "sovbank") &&
+          (location.includes("user/credit/credit_card") ||
+            location.includes("user/change_anketa/credit_card"))
         ) && (
           <WithSuspense
-            fallBack={<Preloader message="Загрузка мобильного меню" type="future" />}
+            fallBack={
+              <Preloader message="Загрузка мобильного меню" type="future" />
+            }
           >
             <MobileMenu />
           </WithSuspense>
         )}
-      {viewport !== 'desktop' &&
+      {viewport !== "desktop" &&
         !modal.view &&
         !zaimerLink &&
-        !location.includes('user') &&
-        currentDomain === 'new_sobank' && (
+        !location.includes("user") &&
+        currentDomain === "new_sobank" && (
           <WithSuspense
-            fallBack={<Preloader message="Загрузка мобильного меню" type="future" />}
+            fallBack={
+              <Preloader message="Загрузка мобильного меню" type="future" />
+            }
           >
             <NewSobankMobileMenu />
           </WithSuspense>

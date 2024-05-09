@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+"use client";
 
-import { batch } from 'react-redux';
+import { useEffect, useRef, useState } from "react";
+
+import { batch } from "react-redux";
 
 export const useTimerForDate = () => {
   const [timer, setTimer] = useState({
-    seconds: '00',
-    minute: '00',
+    seconds: "00",
+    minute: "00",
   });
   const [isActive, setIsActive] = useState(false);
   const [counter, setCounter] = useState<number>(0);
@@ -19,15 +21,16 @@ export const useTimerForDate = () => {
 
         batch(() => {
           setTimer({
-            seconds: String(secondCounter).padStart(2, '0'),
-            minute: String(minuteCounter).padStart(2, '0'),
+            seconds: String(secondCounter).padStart(2, "0"),
+            minute: String(minuteCounter).padStart(2, "0"),
           });
-          setCounter(c => c + 1);
+          setCounter((c) => c + 1);
         });
       }, 1000);
     }
 
-    return () => clearInterval(intervalId.current as ReturnType<typeof setInterval>);
+    return () =>
+      clearInterval(intervalId.current as ReturnType<typeof setInterval>);
   }, [isActive, counter]);
 
   const stopTimer = () => {
@@ -35,15 +38,17 @@ export const useTimerForDate = () => {
       setIsActive(false);
       setCounter(0);
       setTimer({
-        seconds: '00',
-        minute: '00',
+        seconds: "00",
+        minute: "00",
       });
     });
     clearInterval(intervalId.current as ReturnType<typeof setInterval>);
   };
 
   const setDate = (data: number) => {
-    setCounter(Math.abs(Math.round(Date.now() - Math.round(+data.toFixed())) / 1000));
+    setCounter(
+      Math.abs(Math.round(Date.now() - Math.round(+data.toFixed())) / 1000)
+    );
   };
 
   return {

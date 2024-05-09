@@ -205,6 +205,7 @@ export const Current: CurrentProps = {
     pro: 85610464,
     masterbank: 85610464,
   },
+
   favicon: {
     onbank: onb,
     sovbank: sov,

@@ -1,27 +1,31 @@
-import { useEffect } from 'react';
+"use client";
 
-import { resetMask } from '@/Common/AppFormController/ControllersFunc';
-import { Nullable } from '@/Components/Inputs/Select/Type';
+import { useEffect } from "react";
+
+import { resetMask } from "@/Common/AppFormController/ControllersFunc";
+import { Nullable } from "@/Components/Inputs/Select/Type";
 
 const useChangeStorage = () => {
-  const lsPhone: Nullable<string> = localStorage.getItem('phoneNumber');
-  const lsStatePhone: Nullable<string> = localStorage.getItem('phoneNumberFromState');
+  const lsPhone: Nullable<string> = localStorage.getItem("phoneNumber");
+  const lsStatePhone: Nullable<string> = localStorage.getItem(
+    "phoneNumberFromState"
+  );
 
   useEffect(() => {
-    localStorage.removeItem('birthday');
-    localStorage.removeItem('brithDateStatus');
+    localStorage.removeItem("birthday");
+    localStorage.removeItem("brithDateStatus");
   }, []);
 
   useEffect(() => {
-    if (!lsPhone || !lsPhone.includes('+')) return;
+    if (!lsPhone || !lsPhone.includes("+")) return;
 
-    localStorage.setItem('phoneNumber', resetMask(lsPhone));
+    localStorage.setItem("phoneNumber", resetMask(lsPhone));
   }, [lsPhone]);
 
   useEffect(() => {
-    if (!lsStatePhone || !lsStatePhone.includes('+')) return;
+    if (!lsStatePhone || !lsStatePhone.includes("+")) return;
 
-    localStorage.setItem('phoneNumberFromState', resetMask(lsStatePhone));
+    localStorage.setItem("phoneNumberFromState", resetMask(lsStatePhone));
   }, [lsStatePhone]);
 };
 

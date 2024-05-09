@@ -1,4 +1,6 @@
-import { RefObject, useEffect, useLayoutEffect, useState } from 'react';
+"use client";
+
+import { RefObject, useEffect, useLayoutEffect, useState } from "react";
 
 export const useDimensions = (targetRef: RefObject<HTMLDivElement>) => {
   const getDimensions = () => ({
@@ -6,17 +8,18 @@ export const useDimensions = (targetRef: RefObject<HTMLDivElement>) => {
     height: targetRef.current ? targetRef.current.offsetHeight : 0,
   });
 
-  const [dimensions, setDimensions] = useState<{ width: number; height: number }>(
-    getDimensions,
-  );
+  const [dimensions, setDimensions] = useState<{
+    width: number;
+    height: number;
+  }>(getDimensions);
 
   const handleResize = () => {
     setDimensions(getDimensions());
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useLayoutEffect(() => {

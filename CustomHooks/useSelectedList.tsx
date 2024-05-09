@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+"use client";
 
-import { Nullable } from '@/ApiConfig/DadataApi/DadataPropsTypes';
-import { currentDomain } from '@/GlobalConfig';
+import React, { useEffect, useRef, useState } from "react";
+
+import { Nullable } from "@/ApiConfig/DadataApi/DadataPropsTypes";
+import { currentDomain } from "@/GlobalConfig";
 
 export type RefType<T> = React.RefObject<T>;
 export type ReactSetState<T> = React.Dispatch<React.SetStateAction<T>>;
@@ -20,14 +22,16 @@ export interface ListMethods {
   setCalm: ReactSetState<boolean | undefined>;
   blurHandler: (
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-    callbackFn?: callBackFn<HTMLInputElement | HTMLTextAreaElement>,
+    callbackFn?: callBackFn<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   blurInput: (
-    callback?: (inputRef: RefType<HTMLInputElement | HTMLTextAreaElement>) => any,
+    callback?: (
+      inputRef: RefType<HTMLInputElement | HTMLTextAreaElement>
+    ) => any
   ) => void;
   setInvisibleContent: (
     value: string,
-    callback?: (invisibleContent: React.RefObject<HTMLDivElement>) => any,
+    callback?: (invisibleContent: React.RefObject<HTMLDivElement>) => any
   ) => void;
   checkChangeDefaultValue: (defaultValue?: Nullable<string>) => void;
   documentClickHandler: (e: MouseEvent) => void;
@@ -50,18 +54,18 @@ const useSelectedList = (defaultValue?: Nullable<string>) => {
   const invisibleContent = useRef<HTMLDivElement>(null);
   const [dirty, setDirty] = useState<boolean>(false);
   const [calm, setCalm] = useState<boolean | undefined>(undefined);
-  const InputOpenIndex = '1000';
-  const IconOpenIndex = '1001';
-  const InputCloseIndex = '0';
-  const IconCloseIndex = '1';
+  const InputOpenIndex = "1000";
+  const IconOpenIndex = "1001";
+  const InputCloseIndex = "0";
+  const IconCloseIndex = "1";
 
   useEffect(() => {
-    document.addEventListener('click', (e: MouseEvent) =>
-      methods.documentClickHandler(e),
+    document.addEventListener("click", (e: MouseEvent) =>
+      methods.documentClickHandler(e)
     );
     return () =>
-      document.removeEventListener('click', (e: MouseEvent) =>
-        methods.documentClickHandler(e),
+      document.removeEventListener("click", (e: MouseEvent) =>
+        methods.documentClickHandler(e)
       );
   }, []);
 
@@ -78,9 +82,9 @@ const useSelectedList = (defaultValue?: Nullable<string>) => {
     mouseOutHandler() {},
     checkIncludes() {
       let includes = false;
-      this.list.current?.childNodes.forEach(item => {
+      this.list.current?.childNodes.forEach((item) => {
         const div = item as unknown as HTMLDivElement;
-        if (div.classList.value.includes('includes')) {
+        if (div.classList.value.includes("includes")) {
           includes = true;
         }
       });
@@ -102,7 +106,7 @@ const useSelectedList = (defaultValue?: Nullable<string>) => {
       if (input) {
         input.style.borderRadius = `8px`;
         input.style.top = `52px`;
-        input.style.borderTop = '2px solid rgba(90, 90, 90, 1)';
+        input.style.borderTop = "2px solid rgba(90, 90, 90, 1)";
       }
     },
     blurInput(callback) {
@@ -112,45 +116,47 @@ const useSelectedList = (defaultValue?: Nullable<string>) => {
       callback && callback(input);
     },
     setInvisibleContent(value, callback) {
-      invisibleContent.current ? (invisibleContent.current.textContent = value) : '';
+      invisibleContent.current
+        ? (invisibleContent.current.textContent = value)
+        : "";
       callback && callback(invisibleContent);
     },
     checkChangeDefaultValue(defaultValue) {
-      this.setInputValue(defaultValue || '');
+      this.setInputValue(defaultValue || "");
     },
     documentClickHandler(e) {
       const target = e.target as Element;
       if (
         !list.current?.contains(target) &&
-        list.current?.classList.value.includes('active') &&
+        list.current?.classList.value.includes("active") &&
         target !== input.current
       ) {
         this.closeList();
       }
     },
     closeList() {
-      list.current?.classList.remove('active');
-      input.current ? (input.current.style.zIndex = InputCloseIndex) : '';
-      icon.current ? (icon.current.style.zIndex = IconCloseIndex) : '';
+      list.current?.classList.remove("active");
+      input.current ? (input.current.style.zIndex = InputCloseIndex) : "";
+      icon.current ? (icon.current.style.zIndex = IconCloseIndex) : "";
     },
     openList(focusable?: boolean) {
-      list.current?.classList.add('active');
-      icon.current ? (icon.current.style.zIndex = IconOpenIndex) : '';
-      input.current ? (input.current.style.zIndex = InputOpenIndex) : '';
+      list.current?.classList.add("active");
+      icon.current ? (icon.current.style.zIndex = IconOpenIndex) : "";
+      input.current ? (input.current.style.zIndex = InputOpenIndex) : "";
     },
     keyClosersHandler(e: React.KeyboardEvent, closers) {
       if (
-        e.code === 'Tab' ||
-        e.key === 'Tab' ||
-        e.key === 'Escape' ||
-        e.code === 'Escape'
+        e.code === "Tab" ||
+        e.key === "Tab" ||
+        e.key === "Escape" ||
+        e.code === "Escape"
       ) {
         this.closeList();
       }
     },
     setInputValue(value: string, callback?: () => void) {
-      input.current ? (input.current.value = value) : '';
-      maskedInput ? (maskedInput.value = value) : '';
+      input.current ? (input.current.value = value) : "";
+      maskedInput ? (maskedInput.value = value) : "";
       callback && callback();
     },
     setMaskedRef(ref: HTMLInputElement | null) {

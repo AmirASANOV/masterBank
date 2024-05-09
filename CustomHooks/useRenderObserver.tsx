@@ -1,4 +1,6 @@
-import { RefObject, useEffect, useState } from 'react';
+"use client";
+
+import { RefObject, useEffect, useState } from "react";
 
 export interface IntersectionArgs extends IntersectionObserverInit {
   freezeOnVisible?: boolean;
@@ -9,10 +11,10 @@ const useRenderObserver = (
   {
     threshold = 0,
     root = null,
-    rootMargin = '0%',
+    rootMargin = "0%",
     freezeOnVisible = true,
   }: IntersectionArgs,
-  callBack?: ([entry]: Array<IntersectionObserverEntry>) => void,
+  callBack?: ([entry]: Array<IntersectionObserverEntry>) => void
 ) => {
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
   const frozen = !!entry?.isIntersecting && freezeOnVisible;

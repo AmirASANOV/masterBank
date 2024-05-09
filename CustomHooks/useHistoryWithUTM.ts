@@ -1,4 +1,6 @@
-import { useNavigate, useLocation } from 'react-router-dom';
+"use client";
+
+import { useNavigate, useLocation } from "react-router-dom";
 
 export type HistoryType = ReturnType<typeof useHistoryWithUTM>;
 
@@ -9,7 +11,7 @@ export const useHistoryWithUTM = () => {
   const methods = {
     push: (pathname: string) => {
       history(`${pathname}${location.search}`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     replace: (pathname: string) => {
       history(`${pathname}${location.search}`, { replace: true });
@@ -17,7 +19,7 @@ export const useHistoryWithUTM = () => {
     location,
     returnToBack: () => history(-1),
     scroll: (to: number, options?: { smooth?: boolean; duration?: number }) =>
-      window.scrollTo({ top: to, behavior: 'smooth', ...options }),
+      window.scrollTo({ top: to, behavior: "smooth", ...options }),
     reload() {
       window.location.reload();
     },
@@ -31,19 +33,22 @@ export const removeTokenFromUTM = () => {
 
   let url;
 
-  if (utm.includes('?token=')) {
-    const index = utm.lastIndexOf('?token=');
+  if (utm.includes("?token=")) {
+    const index = utm.lastIndexOf("?token=");
     url = utm.substring(index, index + 22);
-    let newSearch = utm.replace(url, '');
-    if (newSearch.includes('&')) {
-      newSearch = newSearch.replace('&', '?');
+    let newSearch = utm.replace(url, "");
+    if (newSearch.includes("&")) {
+      newSearch = newSearch.replace("&", "?");
     }
     return window.location.search.replace(window.location.search, newSearch);
   }
-  if (utm.includes('&token=')) {
-    const index = utm.lastIndexOf('&token=');
+  if (utm.includes("&token=")) {
+    const index = utm.lastIndexOf("&token=");
     url = utm.substring(index, index + 22);
-    return window.location.search.replace(window.location.search, utm.replace(url, ''));
+    return window.location.search.replace(
+      window.location.search,
+      utm.replace(url, "")
+    );
   }
 
   return undefined;

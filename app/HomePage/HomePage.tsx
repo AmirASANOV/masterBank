@@ -1,18 +1,20 @@
-import React, { lazy } from 'react';
+"use client";
 
-import Preloader from '@/Components/Preloader/Preloader';
-import { WithSuspense } from '@/Components/Suspense/WithSuspense';
-import { useAppSelector } from '@/CustomHooks/useAppSelector';
+import React, { lazy } from "react";
 
-const HomePageDesktop = lazy(() => import('./HomePageDesktop'));
-const HomePageMobile = lazy(() => import('./HomePageMobile'));
+import Preloader from "@/Components/Preloader/Preloader";
+import { WithSuspense } from "@/Components/Suspense/WithSuspense";
+import { useAppSelector } from "@/CustomHooks/useAppSelector";
+
+const HomePageDesktop = lazy(() => import("./HomePageDesktop"));
+const HomePageMobile = lazy(() => import("./HomePageMobile"));
 
 const HomePage: React.FC = () => {
-  const viewport = useAppSelector(state => state.config.viewport);
+  const viewport = useAppSelector((state) => state.config.viewport);
 
   return (
     <>
-      {viewport !== 'mobile' ? (
+      {viewport !== "mobile" ? (
         <WithSuspense
           fallBack={<Preloader message="Загрузка страницы..." type="future" />}
         >

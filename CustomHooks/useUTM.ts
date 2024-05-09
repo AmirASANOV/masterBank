@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+"use client";
 
-import { Nullable } from '@/ApiConfig/DadataApi/DadataPropsTypes';
-import { getUrlSearchParams } from '@/Common/AppFormHelpers/Helpers';
+import { useEffect, useState } from "react";
+
+import { Nullable } from "@/ApiConfig/DadataApi/DadataPropsTypes";
+import { getUrlSearchParams } from "@/Common/AppFormHelpers/Helpers";
 
 export interface UtmParams {
   free_period: Nullable<string>;
@@ -15,11 +17,11 @@ export const useUTM = (): UtmParams => {
   });
 
   useEffect(() => {
-    const free_period = getUrlSearchParams('free_period');
-    const limit = getUrlSearchParams('limit');
+    const free_period = getUrlSearchParams("free_period");
+    const limit = getUrlSearchParams("limit");
     setUtm({
-      free_period: free_period || '160',
-      limit: limit ? Number(limit).toLocaleString('ru-RU') : '1 000 000 ',
+      free_period: free_period || "160",
+      limit: limit ? Number(limit).toLocaleString("ru-RU") : "1 000 000 ",
     });
   }, []);
 

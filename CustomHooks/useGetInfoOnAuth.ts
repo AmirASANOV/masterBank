@@ -1,14 +1,16 @@
-import { useEffect } from 'react';
+"use client";
 
-import { ValidatorThunk } from '../ReduxStore/reducer/Validator/ValidatorThunk';
+import { useEffect } from "react";
 
-import useAppDispatch from './useAppDispatch';
-import { useAppSelector } from './useAppSelector';
+import { ValidatorThunk } from "../ReduxStore/reducer/Validator/ValidatorThunk";
+
+import useAppDispatch from "./useAppDispatch";
+import { useAppSelector } from "./useAppSelector";
 
 const useGetInfoOnAuth = () => {
   const dispatch = useAppDispatch();
 
-  const { isAuth } = useAppSelector(state => state.session);
+  const { isAuth } = useAppSelector((state) => state.session);
 
   useEffect(() => {
     if (!isAuth) return;

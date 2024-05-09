@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+"use client";
 
-import { AxiosError } from 'axios';
+import React, { useEffect, useState } from "react";
 
-import ServiceApi from '../ApiConfig/Endpoints/ServiceApi';
+import { AxiosError } from "axios";
+
+import ServiceApi from "../ApiConfig/Endpoints/ServiceApi";
 import {
   authSignIn,
   confirmAutologinCode,
@@ -17,47 +19,57 @@ import {
   setStepToPhoneInput,
   setStorageTimeStart,
   clearStorageTimeStart,
-} from '../ReduxStore/reducer/userReducer/userReducer';
+} from "../ReduxStore/reducer/userReducer/userReducer";
 
-import useAppDispatch from './useAppDispatch';
-import { useAppSelector } from './useAppSelector';
-import { useHistoryWithUTM } from './useHistoryWithUTM';
+import useAppDispatch from "./useAppDispatch";
+import { useAppSelector } from "./useAppSelector";
+import { useHistoryWithUTM } from "./useHistoryWithUTM";
 
-import { AuthApi } from '@/ApiConfig/auth/authApi';
-import { checkPhone, resetMask } from '@/Common/AppFormController/ControllersFunc';
-import { lsHandler } from '@/Common/LocalStorage/LSHandler';
-import { initialStateValid } from '@/Components/ApplicationFormComponents/ResendForm';
-import { Nullable } from '@/Components/Inputs/Select/Type';
+import { AuthApi } from "@/ApiConfig/auth/authApi";
+import {
+  checkPhone,
+  resetMask,
+} from "@/Common/AppFormController/ControllersFunc";
+import { lsHandler } from "@/Common/LocalStorage/LSHandler";
+import { initialStateValid } from "@/Components/ApplicationFormComponents/ResendForm";
+import { Nullable } from "@/Components/Inputs/Select/Type";
 import {
   addNotification,
   showModal,
-} from '@/ReduxStore/reducer/ConfigReducer/ConfigReducer';
-import { AppFormActions } from '@/ReduxStore/reducer/Validator/ValidatorReducer';
+} from "@/ReduxStore/reducer/ConfigReducer/ConfigReducer";
+import { AppFormActions } from "@/ReduxStore/reducer/Validator/ValidatorReducer";
 
 export const useModal = () => {
   const ls = lsHandler();
-  const lsPhone: Nullable<string> = ls.get('phoneNumber');
+  const lsPhone: Nullable<string> = ls.get("phoneNumber");
   const phoneInit = resetMask(lsPhone).length === 11;
 
-  const { phone, href, callBack } = useAppSelector(store => store.config.modalWindow);
-  const { type } = useAppSelector(state => state.config.user);
-  const autoLoginHref = useAppSelector(store => store.config.modalWindow.href);
-  const autoLoginCallback = useAppSelector(state => state.config.modalWindow.callBack);
-  const isDesktop = useAppSelector(store => store.config.isDesktop);
-  const { phoneNumber, token } = useAppSelector(state => state.session);
+  const { phone, href, callBack } = useAppSelector(
+    (store) => store.config.modalWindow
+  );
+  const { type } = useAppSelector((state) => state.config.user);
+  const autoLoginHref = useAppSelector(
+    (store) => store.config.modalWindow.href
+  );
+  const autoLoginCallback = useAppSelector(
+    (state) => state.config.modalWindow.callBack
+  );
+  const isDesktop = useAppSelector((store) => store.config.isDesktop);
+  const { phoneNumber, token } = useAppSelector((state) => state.session);
   const [valid, setValid] = useState(initialStateValid);
   const dispatch = useAppDispatch();
-  const [showChangePhone, setShowChangePhone] = useState<Nullable<boolean>>(phoneInit);
+  const [showChangePhone, setShowChangePhone] =
+    useState<Nullable<boolean>>(phoneInit);
   const [showCodeMessage, setShowCodeMessage] = useState(false);
   const [sendingCode, setSendingCode] = useState(false);
   const history = useHistoryWithUTM();
   const [countClickResendSms, setCountClickResendSms] = useState(0);
 
-  const authTypeEnv = useAppSelector(state => state.config.user.type);
+  const authTypeEnv = useAppSelector((state) => state.config.user.type);
 
   const outputClickHandler = (e: MouseEvent) => {
     const target = e.target as Element;
-    if (target && target.className === 'modal-container') {
+    if (target && target.className === "modal-container") {
       dispatch(showModal(false, {}));
     }
   };
@@ -75,10 +87,10 @@ export const useModal = () => {
     const newValid = checkPhone(
       resetMask(value),
       true,
-      'return_phone_without_mask',
+      "return_phone_without_mask",
       null,
       true,
-      [],
+      []
     );
 
     setValid(newValid);
@@ -88,20 +100,22 @@ export const useModal = () => {
       return;
     }
 
-    setShowChangePhone(prevState => (prevState === null ? null : true));
+    setShowChangePhone((prevState) => (prevState === null ? null : true));
     dispatch(setPhoneNumber(newValid.value));
-    dispatch(AppFormActions.updateUserPhone({ value: newValid.value, touched: true }));
+    dispatch(
+      AppFormActions.updateUserPhone({ value: newValid.value, touched: true })
+    );
 
-    if (token && ls.get('waiting-sms')) {
-      if (authTypeEnv === 'MTS_ID') dispatch(signInMobileId(newValid.value));
+    if (token && ls.get("waiting-sms")) {
+      if (authTypeEnv === "MTS_ID") dispatch(signInMobileId(newValid.value));
       else dispatch(authSignIn(newValid.value));
-    } else if (!token && !ls.get('time-start')) {
+    } else if (!token && !ls.get("time-start")) {
       dispatch(signInWithCheckType(newValid.value));
       dispatch(setStorageTimeStart(Math.floor(Date.now() / 1000)));
     }
 
     setTimeout(() => {
-      document.getElementById('code__confirm')?.focus();
+      document.getElementById("code__confirm")?.focus();
     }, 1000);
   };
 
@@ -120,16 +134,16 @@ export const useModal = () => {
           return history.push(autoLoginHref);
         }
 
-        return history.push('/user/credit/credit_card/credit_parameters_info/');
+        return history.push("/user/credit/credit_card/credit_parameters_info/");
       };
 
-      if (type === 'BASIC_SMS')
+      if (type === "BASIC_SMS")
         dispatch(confirmCode(phoneVal, Number(resetMask(value)), callback));
       else dispatch(confirmMobileId(phoneVal, resetMask(value), callback));
 
       setSendingCode(false);
     } else {
-      dispatch(setCodeMessage(''));
+      dispatch(setCodeMessage(""));
     }
   };
   const checkAutologinCode = (value: Nullable<string>, phoneVal: string) => {
@@ -142,7 +156,7 @@ export const useModal = () => {
         return history.push(autoLoginHref);
       }
 
-      return history.push('/user/credit/credit_card/credit_parameters_info/');
+      return history.push("/user/credit/credit_card/credit_parameters_info/");
     };
 
     dispatch(confirmAutologinCode(phoneVal, Number(value), token, callback));
@@ -155,7 +169,7 @@ export const useModal = () => {
       callback();
       setSendingCode(false);
       setShowChangePhone(null);
-      setValid(prevState => ({ ...prevState, value: '', valid: false }));
+      setValid((prevState) => ({ ...prevState, value: "", valid: false }));
 
       startTimer();
       setCountClickResendSms(0);
@@ -167,38 +181,38 @@ export const useModal = () => {
       if (!err.response?.status) return;
 
       if (err.response.status === 417) {
-        dispatch(setPhoneNumber(''));
+        dispatch(setPhoneNumber(""));
         dispatch(showModal(false));
         dispatch(
           addNotification(
-            'Вы исчерпали лимит смс в сутки, пожалуйста, попробуйте завтра',
-          ),
+            "Вы исчерпали лимит смс в сутки, пожалуйста, попробуйте завтра"
+          )
         );
         dispatch(setStepToPhoneInput());
       } else if (err.response.status === 429) {
-        dispatch(addNotification('🐶🐱🐹🐭🐰🙈🦆🦀'));
+        dispatch(addNotification("🐶🐱🐹🐭🐰🙈🦆🦀"));
       } else if (err.response.status === 401) {
         dispatch(localLogOut());
-        dispatch(addNotification('Пожалуйста, авторизуйтесь снова'));
+        dispatch(addNotification("Пожалуйста, авторизуйтесь снова"));
       } else if (err.response.status === 404) {
-        history.push('/user/myProfile');
-        dispatch(addNotification('Пожалуйста, заполните анкету снова'));
+        history.push("/user/myProfile");
+        dispatch(addNotification("Пожалуйста, заполните анкету снова"));
       }
     }
   };
 
   const updateCode = async (phoneVal?: string) => {
-    const number = valid.value || phoneVal || '';
+    const number = valid.value || phoneVal || "";
     try {
       const repeat =
-        type === 'BASIC_SMS'
+        type === "BASIC_SMS"
           ? await ServiceApi.startConfirmPhoneNumber(number)
           : await AuthApi.mobileID({
               phone: phoneVal || valid.value,
             });
 
       setStorageTimeStart(Math.floor(Date.now() / 1000));
-      ls.set('waiting-sms', 'true');
+      ls.set("waiting-sms", "true");
 
       setCountClickResendSms(countClickResendSms + 1);
       if (repeat.status === 200 || repeat.status === 204) {
@@ -218,15 +232,15 @@ export const useModal = () => {
       if (!err.response?.status) return undefined;
 
       if (err.response.status === 403) {
-        dispatch(addNotification('Смс уже отправлена, дождитесь её'));
+        dispatch(addNotification("Смс уже отправлена, дождитесь её"));
       } else if (err.response.status === 429) {
-        dispatch(addNotification('🐶🐱🐹🐭🐰🙈🦆🦀'));
+        dispatch(addNotification("🐶🐱🐹🐭🐰🙈🦆🦀"));
       } else if (err.response.status === 417) {
         dispatch(showModal(false));
         dispatch(
           addNotification(
-            'Вы исчерпали лимит смс в сутки, пожалуйста, попробуйте завтра',
-          ),
+            "Вы исчерпали лимит смс в сутки, пожалуйста, попробуйте завтра"
+          )
         );
         dispatch(setStepToPhoneInput());
       }
@@ -244,16 +258,16 @@ export const useModal = () => {
         surname: undefined,
         phone: undefined,
         callBack: undefined,
-      }),
+      })
     );
   };
 
   useEffect(() => {
     setShowCodeMessage(false);
 
-    document.addEventListener('click', outputClickHandler);
+    document.addEventListener("click", outputClickHandler);
     return () => {
-      document.removeEventListener('click', outputClickHandler);
+      document.removeEventListener("click", outputClickHandler);
     };
   }, []);
 
@@ -272,7 +286,7 @@ export const useModal = () => {
     isDesktop,
     updateCode: (phoneVal?: string) => updateCode(phoneVal),
     valid,
-    defaultPhone: phone || phoneNumber || '',
+    defaultPhone: phone || phoneNumber || "",
     countClickResendSms,
     startTimer,
   };
